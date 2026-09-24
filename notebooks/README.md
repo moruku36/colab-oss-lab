@@ -15,3 +15,15 @@
 3. 短い日本語を1回だけ生成する
 
 実行前に、ランタイムを **L4 GPU** にしてください。
+
+## 02. 量子化で L4 に載る「いちばん大きいモデル」を試す
+
+- ファイル: [02_quantize_largest_model_on_l4.ipynb](02_quantize_largest_model_on_l4.ipynb)
+- [Colab で開く](https://colab.research.google.com/github/moruku36/colab-oss-lab/blob/main/notebooks/02_quantize_largest_model_on_l4.ipynb)
+- 結果の置き場: [docs/results/02_quantization_max.md](../docs/results/02_quantization_max.md)
+
+内容:
+
+1. `google/gemma-4-31B-it`（約31B、bf16 で約62GB）を 4bit 量子化して L4 1枚に載せる
+2. VRAM 使用量と生成速度を測る
+3. 日本語で2問聞き、「想定どおり動いたか」を判定する
