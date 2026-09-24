@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 330" font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',Meiryo,sans-serif">
+  <rect width="760" height="330" rx="12" fill="#ffffff"/>
+  <text x="24" y="36" font-size="20" font-weight="bold" fill="#1f2328">量子化で 62.5GB → 16.6GB。L4（22GB）に収まった</text>
+
+  <!-- scale: 9.6px per GB, origin x=140 -->
+  <g font-size="14" fill="#1f2328">
+    <text x="24" y="92">bf16（そのまま）</text>
+    <rect x="140" y="74" width="600" height="28" rx="4" fill="#cf222e" opacity="0.85"/>
+    <text x="730" y="93" text-anchor="end" fill="#ffffff" font-weight="bold">62.5 GB　載らない</text>
+
+    <text x="24" y="146">4bit 量子化後</text>
+    <rect x="140" y="128" width="159" height="28" rx="4" fill="#1a7f37"/>
+    <text x="308" y="147" font-weight="bold" fill="#1a7f37">16.6 GB　載る</text>
+  </g>
+
+  <!-- L4 line at 22GB = 140+211 -->
+  <line x1="351" y1="60" x2="351" y2="170" stroke="#0969da" stroke-width="2.5" stroke-dasharray="6 4"/>
+  <text x="357" y="66" font-size="13" fill="#0969da" font-weight="bold">L4 の VRAM 22GB</text>
+
+  <!-- stacked usage bar -->
+  <text x="24" y="214" font-size="16" font-weight="bold" fill="#1f2328">実行中の L4 の中身（22GB）</text>
+  <g font-size="13">
+    <rect x="24" y="228" width="555" height="36" fill="#1a7f37"/>
+    <rect x="579" y="228" width="20" height="36" fill="#bf8700"/>
+    <rect x="599" y="228" width="137" height="36" fill="#d0d7de"/>
+    <rect x="24" y="228" width="712" height="36" fill="none" stroke="#57606a"/>
+    <text x="36" y="251" fill="#ffffff" font-weight="bold">モデル本体 16.6GB（4bit の重み）</text>
+    <text x="667" y="251" text-anchor="middle" fill="#1f2328">空き 約4.8GB</text>
+    <text x="589" y="290" text-anchor="middle" fill="#9a6700">作業用 約0.6GB</text>
+    <line x1="589" y1="266" x2="589" y2="276" stroke="#9a6700"/>
+    <text x="24" y="316" fill="#57606a">生成中のピーク 17.2GB。空きに余裕があるので、長い文章を入れても当面は大丈夫。</text>
+  </g>
+</svg>

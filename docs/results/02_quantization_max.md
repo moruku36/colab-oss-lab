@@ -6,6 +6,39 @@
 - **L4（VRAM 22GB）に 4bit 量子化で載る最大クラスは、約 30B（300億パラメータ）前後の密モデル。**
 - 今回選んだのは [`google/gemma-4-31B-it`](https://huggingface.co/google/gemma-4-31B-it)（31.3B、Apache-2.0、ゲートなし）。
 - ノート: [notebooks/02_quantize_largest_model_on_l4.ipynb](../../notebooks/02_quantize_largest_model_on_l4.ipynb)
+- 性能の目安: ChatGPT でいうと **o3 / o4-mini くらい**（[下で説明](#chatgpt-でいうとどのくらい)）
+
+## 検証の構成図
+
+```mermaid
+flowchart LR
+    subgraph PC["自分のPC"]
+        B["ブラウザ<br/>（Colab の画面）"]
+    end
+    subgraph GH["GitHub<br/>moruku36/colab-oss-lab"]
+        NB["ノート 02<br/>.ipynb"]
+        RES["結果<br/>docs/results/02_…md"]
+    end
+    subgraph HF["Hugging Face"]
+        M["google/gemma-4-31B-it<br/>bf16 · 62.5GB"]
+    end
+    subgraph COLAB["Google Colab ランタイム（L4 · High-RAM）"]
+        direction TB
+        DISK["ディスク<br/>188GB 空き"]
+        BNB["bitsandbytes<br/>4bit NF4 に変換"]
+        GPU["NVIDIA L4<br/>VRAM 22GB<br/>使用 17.0GB"]
+        GEN["日本語で2問<br/>速度・VRAMを計測"]
+        DISK --> BNB --> GPU --> GEN
+    end
+    NB -- "Colab で開く" --> B
+    B -- "すべてのセルを実行" --> COLAB
+    M -- "ダウンロード 約3分" --> DISK
+    GEN -- "実行記録（判定つき）" --> RES
+```
+
+## 量子化で何が変わったか
+
+![bf16 だと 62.5GB で L4 に載らないが、4bit にすると 16.6GB になり L4 の 22GB に収まる。実行中は約 4.8GB 空いていた](../images/02_vram.svg)
 
 ## どうやって「最大」を決めたか
 
@@ -86,6 +119,36 @@ VRAMは、計算に使うデータを一時的に置いておく「机（作業�
 【考え方】
 (3個 × 4箱) － 5個 ＋ 2個 ＝ 11個
 ```
+
+---
+
+## ChatGPT でいうとどのくらい？
+
+![GPQA Diamond の点数で並べると、Gemma 4 31B（84.3%）は GPT-4o（約50%）より大きく上で、o3-mini（約80%）と o3（約83〜87%）のあたり、GPT-5（約88%）の少し下](../images/02_chatgpt_position.svg)
+
+**ひとことで: 「o3 / o4-mini（2025年春ごろの ChatGPT の推論モデル）くらい」。GPT-4o よりはっきり上、GPT-5 系には届かない。**
+
+| テスト | Gemma 4 31B（Google 公式） | OpenAI モデルの公表値（目安） |
+| --- | --- | --- |
+| GPQA Diamond（大学院レベルの理系問題） | 84.3% | GPT-4o 約50% / o3-mini 約80% / o3 約83〜87% / GPT-5 約87〜88% |
+| MMLU Pro（幅広い知識） | 85.2% | GPT-4o 約73〜75% |
+| Codeforces（競技プログラミング） | 2150 | o3-mini 約2000 / o3・o4-mini 2700前後 |
+| HLE（道具なしの超難問） | 19.5% | o3 約20% / GPT-5 約25% |
+
+| 比べる相手 | 感覚 |
+| --- | --- |
+| GPT-4o | 推論・数学・コードは Gemma 4 31B のほうがかなり上 |
+| o3-mini 〜 o3 | 難しい問題を解く力はこのあたり |
+| GPT-5 系（今の ChatGPT） | 知識の広さ・長い会話の安定感・日本語のニュアンスで負ける。31B では「知っていること」の量に限界がある |
+
+注意:
+
+- Gemma の値は [モデルカード](https://huggingface.co/google/gemma-4-31B-it) の数字。OpenAI 側は各社の公表値からの目安で、このリポジトリでは検証していない。テストの版（年度）も一部そろっていない
+- ベンチマークの点数と、使ったときの賢さは同じではない
+- 公式の数字は「考えてから答える（thinking）」を有効にした状態の可能性が高い。今回のノートは **thinking オフ + 4bit** なので、表の数字より少し下と考える
+- 速さは ChatGPT よりずっと遅い（約 5.5 トークン/秒）
+
+つまり **「L4 1枚で、少し前の ChatGPT の推論モデルくらいのものが、自分の手元で動いた」** というのが今回の成果。
 
 ---
 

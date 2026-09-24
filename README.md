@@ -30,6 +30,17 @@ Google Colab（Google AI Pro の特典）で、公開されているAIモデル�
 - [Colab で開く](https://colab.research.google.com/github/moruku36/colab-oss-lab/blob/main/notebooks/01_l4_check_and_tiny_model.ipynb)
 - [実行記録](docs/results/01_first_run.md)
 
+2つ目の実験（量子化で L4 に載る最大モデル）:
+
+- [notebooks/02_quantize_largest_model_on_l4.ipynb](notebooks/02_quantize_largest_model_on_l4.ipynb)
+- [Colab で開く](https://colab.research.google.com/github/moruku36/colab-oss-lab/blob/main/notebooks/02_quantize_largest_model_on_l4.ipynb)
+- [実行記録と構成図](docs/results/02_quantization_max.md) — `google/gemma-4-31B-it` を 4bit で L4 に載せ、想定どおり動作（ChatGPT でいうと o3 / o4-mini くらい）
+
+| 実験 | モデル | 大きさ | L4 の VRAM 使用 | 結果 |
+|---|---|---|---|---|
+| 01 | Qwen2.5-1.5B-Instruct | 1.5B（量子化なし） | 小さい | 動いたが日本語の説明は不正確 |
+| 02 | Gemma 4 31B-it | 31B（4bit） | 17.0GB / 22GB | 想定どおり。説明も計算も正確 |
+
 ---
 
 ## いちばん短い説明
