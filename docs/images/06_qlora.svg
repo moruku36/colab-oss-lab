@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 386" font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',Meiryo,sans-serif">
+<rect width="860" height="386" rx="12" fill="#ffffff"/>
+<text x="24" y="36" font-size="20" font-weight="bold" fill="#1f2328">覚えさせた言い回しには強いが、言い回しを変えると半分も答えられない</text>
+<text x="24" y="58" font-size="13" fill="#57606a">Qwen3-8B（4bit NF4）+ LoRA / 50例・5エポック / 学習 1.4分・VRAM 10.0GB・部品 167MB</text>
+<rect x="560" y="74" width="14" height="12" fill="#8c959f"/><text x="580" y="84" font-size="12" fill="#1f2328">学習前</text>
+<rect x="640" y="74" width="14" height="12" fill="#0969da"/><text x="660" y="84" font-size="12" fill="#1f2328">学習後</text>
+<text x="24" y="116" font-size="14" fill="#1f2328">知識（学習に使った聞き方）</text>
+<text x="24" y="133" font-size="11" fill="#57606a">80% 以上で合格</text>
+<rect x="300" y="102" width="2" height="14" rx="3" fill="#8c959f"/>
+<text x="308" y="114" font-size="12" fill="#57606a">0%</text>
+<rect x="300" y="120" width="350" height="14" rx="3" fill="#0969da"/>
+<text x="656" y="132" font-size="12" font-weight="bold" fill="#0969da">92%</text>
+<text x="24" y="168" font-size="14" fill="#1f2328">知識（学習に使っていない聞き方）</text>
+<text x="24" y="185" font-size="11" fill="#57606a">60% 以上で合格</text>
+<rect x="300" y="154" width="2" height="14" rx="3" fill="#8c959f"/>
+<text x="308" y="166" font-size="12" fill="#57606a">0%</text>
+<rect x="300" y="172" width="167" height="14" rx="3" fill="#cf222e"/>
+<text x="473" y="184" font-size="12" font-weight="bold" fill="#cf222e">44%</text>
+<text x="24" y="220" font-size="14" fill="#1f2328">「出典」を付けた（知識の質問）</text>
+<text x="24" y="237" font-size="11" fill="#57606a">覚えさせた書き方</text>
+<rect x="300" y="206" width="2" height="14" rx="3" fill="#8c959f"/>
+<text x="308" y="218" font-size="12" fill="#57606a">0%</text>
+<rect x="300" y="224" width="380" height="14" rx="3" fill="#0969da"/>
+<text x="686" y="236" font-size="12" font-weight="bold" fill="#0969da">100%</text>
+<text x="24" y="272" font-size="14" fill="#1f2328">10問の答えに「出典」が混ざった</text>
+<text x="24" y="289" font-size="11" fill="#57606a">副作用（書き方のにじみ）</text>
+<rect x="300" y="258" width="2" height="14" rx="3" fill="#8c959f"/>
+<text x="308" y="270" font-size="12" fill="#57606a">0%</text>
+<rect x="300" y="276" width="304" height="14" rx="3" fill="#cf222e"/>
+<text x="610" y="288" font-size="12" font-weight="bold" fill="#cf222e">80%</text>
+<text x="24" y="324" font-size="14" fill="#1f2328">10問の正答（算数・数え上げ）</text>
+<text x="24" y="341" font-size="11" fill="#57606a">低下 1問以内で合格</text>
+<rect x="300" y="310" width="304" height="14" rx="3" fill="#8c959f"/>
+<text x="610" y="322" font-size="12" fill="#57606a">80%</text>
+<rect x="300" y="328" width="228" height="14" rx="3" fill="#cf222e"/>
+<text x="534" y="340" font-size="12" font-weight="bold" fill="#cf222e">60%</text>
+<text x="24" y="370" font-size="11" fill="#57606a">赤は想定を外れたところ。10問の正答は 8→6問。英語の PPL は 13.14 → 12.60 で悪化なし。</text>
+</svg>

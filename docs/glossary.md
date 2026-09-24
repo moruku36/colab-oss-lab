@@ -48,7 +48,7 @@ Colabだけを買う古い呼び方のプラン。今の特典と似ているが
 モデルに追加で教えること。全部を作り直すわけではないことが多い。
 
 **LoRA / QLoRA**  
-薄い追加部品だけを学習する方法。QLoRAは、本体を圧縮したまま部品を付ける方法。
+薄い追加部品だけを学習する方法。QLoRAは、本体を圧縮したまま部品を付ける方法。 [実験06](results/06_qlora.md) で試した。
 
 **量子化**  
 重みを圧縮すること。
@@ -95,3 +95,4 @@ AIが扱う言葉の破片。文字そのものではない。
 - [03. thinking のオン・オフ](results/03_thinking_on_off.md) … thinking
 - [04. vLLM で速くする](results/04_vllm_speedup.md) … vLLM・AWQ・MoE・KV キャッシュ
 - [05. 量子化の方式・ビット数を比べる](results/05_quantization_compare.md) … 量子化・PPL
+- [06. QLoRA で追加学習する](results/06_qlora.md) … LoRA / QLoRA

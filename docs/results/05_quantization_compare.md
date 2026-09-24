@@ -169,4 +169,4 @@ $sらrar.f"。.
 - [GPU と L4 / A100 の違い（VRAM は作業机）](../05-gpu-basics.md)
 - [ことばの一覧（量子化・PPL）](../glossary.md)
 
-← 前の実験: [04. vLLM で速くする](04_vllm_speedup.md) ｜ [実験の一覧](README.md) ｜ [README](../../README.md)
+← 前の実験: [04. vLLM で速くする](04_vllm_speedup.md) ｜ 次の実験: [06. QLoRA で追加学習する](06_qlora.md) → ｜ [実験の一覧](README.md) ｜ [README](../../README.md)
