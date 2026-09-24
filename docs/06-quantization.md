@@ -44,3 +44,10 @@
 
 最初から全部を使い分ける必要はありません。  
 「圧縮しないと机に載らないことがある」と分かっていれば十分です。
+
+---
+
+## 関連する実験
+
+- [02. 量子化で載る最大モデル](results/02_quantization_max.md) … bitsandbytes（NF4）の 4bit で 62.5GB → 16.6GB。どこまで載るかの見積もり方
+- [03. vLLM で速くする](results/03_vllm_speedup.md) … AWQ の 4bit を vLLM で使うと、bitsandbytes より速い（上の「今の方針」の 3 を実際に試した）

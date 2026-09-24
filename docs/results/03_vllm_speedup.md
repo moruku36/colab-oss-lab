@@ -148,3 +148,14 @@ GPUとVRAMの違いを、小学生にも分かるように説明します。
 - 26B-A4B で、長い文章（数千トークン）を入れたときの速さと答えを見る
 - vLLM を OpenAI 互換の API サーバーとして立てて、別のプログラムから呼ぶ（→ 07 の RAG・API につながる）
 - 難しい問題で 31B と 26B-A4B の賢さの差を比べる
+
+---
+
+## 関連する解説
+
+- [量子化とは何か（AWQ）](../06-quantization.md)
+- [GPU と L4 / A100 の違い](../05-gpu-basics.md)
+- [これを使うと、何ができるのか](../03-what-you-can-do.md)
+- [ことばの一覧（vLLM・MoE・KV キャッシュ）](../glossary.md)
+
+← 前の実験: [08. thinking のオン・オフ](08_thinking_on_off.md) ｜ [実験の一覧](README.md) ｜ [README](../../README.md)

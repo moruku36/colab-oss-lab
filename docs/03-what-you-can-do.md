@@ -87,3 +87,11 @@ Colab（借り物の厨房）で味見・調整
 | コードを書いてもらう | Gemini、または Colab 内のAI補助 |
 
 両方を同じ月額の中で使えるのが、今の契約の強みです。
+
+---
+
+## 関連する実験
+
+- [02. 量子化で載る最大モデル](results/02_quantization_max.md) … 「公開モデルを動かして会話する」を 31B で実際にやった。ChatGPT との比較つき
+- [08. thinking のオン・オフ](results/08_thinking_on_off.md) … 考えてから答えるモード（thinking）の効果と待ち時間
+- [03. vLLM で速くする](results/03_vllm_speedup.md) … 会話を速くする・同時にたくさんさばく（API サーバーの手前）
