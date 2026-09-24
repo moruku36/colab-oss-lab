@@ -24,7 +24,11 @@ Google Colab（Google AI Pro の特典）で、公開されているAIモデル�
 6. [量子化とは何か（なぜ4bitが出てくるのか）](docs/06-quantization.md)
 7. [ことばの一覧](docs/glossary.md)
 
-ノートブック（実際に動かすファイル）は、これから `notebooks/` に足していきます。
+最初の実験ノート:
+
+- [notebooks/01_l4_check_and_tiny_model.ipynb](notebooks/01_l4_check_and_tiny_model.ipynb)
+- [Colab で開く](https://colab.research.google.com/github/moruku36/colab-oss-lab/blob/main/notebooks/01_l4_check_and_tiny_model.ipynb)
+- [実行記録](docs/results/01_first_run.md)
 
 ---
 
@@ -48,7 +52,7 @@ ColabにOSSモデルを載せるのは「厨房を借りて、自分で料理し
 
 1. 上のドキュメントを、番号順に読む
 2. Colab を開き、ランタイムを **L4 GPU** にする
-3. 今後ここに置くノートを開いて試す
+3. [01 のノート](https://colab.research.google.com/github/moruku36/colab-oss-lab/blob/main/notebooks/01_l4_check_and_tiny_model.ipynb) を開いて試す
 4. うまくいったこと、失敗したことを Issue かメモに残す
 
 成果物（学習した追加部品など）は、Colabのディスクに置いたままにしないでください。  
