@@ -76,3 +76,15 @@
 1. `Qwen/Qwen3-8B` を 4bit NF4 で読み込み、このリポジトリの実験結果など 25 個の知識を LoRA で学習する
 2. 学習に使っていない聞き方で、覚えたかを確かめる
 3. 元々の賢さ（PPL・10問）が落ちていないか、学習時間・VRAM・部品の大きさを測る
+
+## 07. L4 の上限を探る
+
+- ファイル: [07_l4_limit.ipynb](07_l4_limit.ipynb)
+- [Colab で開く](https://colab.research.google.com/github/moruku36/colab-oss-lab/blob/main/notebooks/07_l4_limit.ipynb)
+- 結果の置き場: [docs/results/07_l4_limit.md](../docs/results/07_l4_limit.md)
+
+内容:
+
+1. Qwen3-32B（32.8B）と Seed-OSS-36B（36.2B）を 4bit NF4 で GPU だけに載せられるか試す
+2. 載ったら、扱える文章の長さの上限（1K〜32K トークン）、速さ、10問の正答を測る
+3. Gemma 4 31B（実験02）と並べて、L4 の上限を決める
