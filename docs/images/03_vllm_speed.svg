@@ -6,16 +6,16 @@
 <text x="24" y="114" font-size="12" fill="#57606a">1人で使うときの体感の速さ（トークン/秒、多いほど速い）</text>
 <text x="24" y="145" font-size="13" fill="#1f2328">08: transformers + bnb</text>
 <text x="24" y="161" font-size="11" fill="#57606a">31B（これまで）</text>
-<rect x="250" y="134" width="50" height="22" rx="3" fill="#8c959f"/>
-<text x="308" y="150" font-size="13" font-weight="bold" fill="#8c959f">6.1 </text>
+<rect x="250" y="134" width="41" height="22" rx="3" fill="#8c959f"/>
+<text x="299" y="150" font-size="13" font-weight="bold" fill="#8c959f">6.1 </text>
 <text x="24" y="187" font-size="13" fill="#1f2328">03-A: vLLM + AWQ</text>
 <text x="24" y="203" font-size="11" fill="#57606a">31B（同じモデル）</text>
-<rect x="250" y="176" width="109" height="22" rx="3" fill="#0969da"/>
-<text x="367" y="192" font-size="13" font-weight="bold" fill="#0969da">13.3 （2.2倍）</text>
+<rect x="250" y="176" width="89" height="22" rx="3" fill="#0969da"/>
+<text x="347" y="192" font-size="13" font-weight="bold" fill="#0969da">13.3 （2.2倍）</text>
 <text x="24" y="229" font-size="13" fill="#1f2328">03-B: vLLM + AWQ</text>
 <text x="24" y="245" font-size="11" fill="#57606a">26B-A4B MoE</text>
-<rect x="250" y="218" width="440" height="22" rx="3" fill="#1a7f37"/>
-<text x="698" y="234" font-size="13" font-weight="bold" fill="#1a7f37">53.5 （8.8倍）</text>
+<rect x="250" y="218" width="360" height="22" rx="3" fill="#1a7f37"/>
+<text x="618" y="234" font-size="13" font-weight="bold" fill="#1a7f37">53.5 （8.8倍）</text>
 <line x1="24" y1="260" x2="776" y2="260" stroke="#d0d7de"/>
 <text x="24" y="278" font-size="16" font-weight="bold" fill="#1f2328">16件まとめて聞いたとき</text>
 <text x="24" y="296" font-size="12" fill="#57606a">みんなで同時に使うときの合計の速さ（トークン/秒）</text>
@@ -24,11 +24,11 @@
 <text x="250" y="332" font-size="12" fill="#8c959f">測っていない</text>
 <text x="24" y="369" font-size="13" fill="#1f2328">03-A: vLLM + AWQ</text>
 <text x="24" y="385" font-size="11" fill="#57606a">31B / 同時に最大16件</text>
-<rect x="250" y="358" width="113" height="22" rx="3" fill="#0969da"/>
-<text x="371" y="374" font-size="13" font-weight="bold" fill="#0969da">102.9 （1件ずつの 7.7倍）</text>
+<rect x="250" y="358" width="92" height="22" rx="3" fill="#0969da"/>
+<text x="350" y="374" font-size="13" font-weight="bold" fill="#0969da">102.9 （1件ずつの 7.7倍）</text>
 <text x="24" y="411" font-size="13" fill="#1f2328">03-B: vLLM + AWQ</text>
 <text x="24" y="427" font-size="11" fill="#57606a">26B-A4B MoE / 同時に最大16件</text>
-<rect x="250" y="400" width="440" height="22" rx="3" fill="#1a7f37"/>
-<text x="698" y="416" font-size="13" font-weight="bold" fill="#1a7f37">402.1 （1件ずつの 7.5倍）</text>
+<rect x="250" y="400" width="360" height="22" rx="3" fill="#1a7f37"/>
+<text x="618" y="416" font-size="13" font-weight="bold" fill="#1a7f37">402.1 （1件ずつの 7.5倍）</text>
 <text x="24" y="454" font-size="11" fill="#57606a">31B は L4 にぎりぎりで、会話の記憶（KV キャッシュ）は 2,337 トークン分しか取れない。MoE は 39,092 トークン分取れる。</text>
 </svg>
