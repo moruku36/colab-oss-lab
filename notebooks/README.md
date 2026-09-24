@@ -51,3 +51,15 @@
 1. vLLM を入れる
 2. Gemma 4 31B（AWQ 4bit）と Gemma 4 26B-A4B（MoE、AWQ 4bit）を vLLM で動かす
 3. 1件ずつ / 16件まとめての速さ、03 と同じ5問の正答数、VRAM を測り、03（transformers + bitsandbytes）と比べる
+
+## 05. 量子化の方式・ビット数を比べる
+
+- ファイル: [05_quantization_compare.ipynb](05_quantization_compare.ipynb)
+- [Colab で開く](https://colab.research.google.com/github/moruku36/colab-oss-lab/blob/main/notebooks/05_quantization_compare.ipynb)
+- 結果の置き場: [docs/results/05_quantization_compare.md](../docs/results/05_quantization_compare.md)
+
+内容:
+
+1. 同じ `Qwen/Qwen3-8B` を、bf16 / bitsandbytes 8bit・4bit（NF4・FP4）/ HQQ 4・3・2bit の7通りで読み込む
+2. VRAM、パープレキシティ（英語・日本語）、10問の正答数、速さを測る
+3. 「どこまで下げても大丈夫か」を判定する
