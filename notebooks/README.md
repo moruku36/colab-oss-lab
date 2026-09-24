@@ -63,3 +63,16 @@
 1. 同じ `Qwen/Qwen3-8B` を、bf16 / bitsandbytes 8bit・4bit（NF4・FP4）/ HQQ 4・3・2bit の7通りで読み込む
 2. VRAM、パープレキシティ（英語・日本語）、10問の正答数、速さを測る
 3. 「どこまで下げても大丈夫か」を判定する
+
+## 06. QLoRA で追加学習する
+
+- ファイル: [06_qlora.ipynb](06_qlora.ipynb)
+- [Colab で開く](https://colab.research.google.com/github/moruku36/colab-oss-lab/blob/main/notebooks/06_qlora.ipynb)
+- 学習データ: [data/06_qlora_facts.json](../data/06_qlora_facts.json)
+- 結果の置き場: [docs/results/06_qlora.md](../docs/results/06_qlora.md)
+
+内容:
+
+1. `Qwen/Qwen3-8B` を 4bit NF4 で読み込み、このリポジトリの実験結果など 25 個の知識を LoRA で学習する
+2. 学習に使っていない聞き方で、覚えたかを確かめる
+3. 元々の賢さ（PPL・10問）が落ちていないか、学習時間・VRAM・部品の大きさを測る
