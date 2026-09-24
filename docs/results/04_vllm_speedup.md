@@ -1,16 +1,16 @@
-# 03. vLLM で速くする
+# 04. vLLM で速くする
 
 ## 結論（先に）
 
 - **想定どおり動いた。** 4つの判定がすべて合格（下の実行記録）
 - **同じ Gemma 4 31B でも、vLLM に替えるだけで 1件ずつの速さが 2.2 倍**（6.1 → 13.3 トークン/秒）。正答は 5/5 のまま
 - **16件まとめて聞くと、合計 102.9 トークン/秒**。1件ずつの約 7.7 倍。vLLM は「同時にたくさん」がいちばん得意
-- **MoE の Gemma 4 26B-A4B なら 1件ずつ 53.5 トークン/秒（08 の 8.8 倍）**、まとめて 402 トークン/秒。こちらも 5問すべて正解
+- **MoE の Gemma 4 26B-A4B なら 1件ずつ 53.5 トークン/秒（03 の 8.8 倍）**、まとめて 402 トークン/秒。こちらも 5問すべて正解
 - ただし **31B は L4 にぎりぎり**。標準設定では起動できず、メモリを切り詰める設定が必要だった。会話の長さは最大 1,024 トークンに制限している
 - 普段使いのおすすめ: **L4 1枚なら「vLLM + Gemma 4 26B-A4B（AWQ 4bit）」**。速くて、会話の記憶にも余裕がある
-- ノート: [notebooks/03_vllm_speedup.ipynb](../../notebooks/03_vllm_speedup.ipynb)
+- ノート: [notebooks/04_vllm_speedup.ipynb](../../notebooks/04_vllm_speedup.ipynb)
 
-![1件ずつの速さは、08 の 6.1 トークン/秒に対して、vLLM の 31B が 13.3、MoE が 53.5。16件まとめると 31B が 102.9、MoE が 402.1 トークン/秒](../images/03_vllm_speed.svg)
+![1件ずつの速さは、03 の 6.1 トークン/秒に対して、vLLM の 31B が 13.3、MoE が 53.5。16件まとめると 31B が 102.9、MoE が 402.1 トークン/秒](../images/04_vllm_speed.svg)
 
 ## 検証の構成
 
@@ -25,14 +25,14 @@ flowchart TB
             A["A: Gemma 4 31B<br/>AWQ 4bit・19.2GB"]
             B["B: Gemma 4 26B-A4B（MoE）<br/>AWQ 4bit・17.2GB"]
         end
-        M["測る<br/>① 1件ずつ ×3<br/>② 16件まとめて<br/>③ 08 と同じ5問"]
+        M["測る<br/>① 1件ずつ ×3<br/>② 16件まとめて<br/>③ 03 と同じ5問"]
         NB --> VENV --> RUN --> M
     end
     HF["🤗 Hugging Face<br/>量子化済みの重み"] -- ダウンロード --> RUN
     M -- 実行記録 --> RES["📄 この結果ページ"]
 ```
 
-| | 02 / 08（これまで） | 03（今回） |
+| | 02 / 03（これまで） | 04（今回） |
 |---|---|---|
 | エンジン | transformers | **vLLM 0.30.0** |
 | 4bit の形式 | bitsandbytes NF4（読み込み時に変換） | **AWQ W4A16（量子化済みの重みを読む）** |
@@ -41,7 +41,7 @@ flowchart TB
 
 使った重み（どちらも Apache-2.0、ゲートなし）:
 
-- A: [`ebircak/gemma-4-31B-it-4bit-W4A16-AWQ`](https://huggingface.co/ebircak/gemma-4-31B-it-4bit-W4A16-AWQ)（02 / 08 と同じ `google/gemma-4-31B-it` を AWQ で 4bit 化したもの）
+- A: [`ebircak/gemma-4-31B-it-4bit-W4A16-AWQ`](https://huggingface.co/ebircak/gemma-4-31B-it-4bit-W4A16-AWQ)（02 / 03 と同じ `google/gemma-4-31B-it` を AWQ で 4bit 化したもの）
 - B: [`cyankiwi/gemma-4-26B-A4B-it-AWQ-4bit`](https://huggingface.co/cyankiwi/gemma-4-26B-A4B-it-AWQ-4bit)（全体 25.2B、1トークンで動くのは約 3.8B）
 
 ---
@@ -60,7 +60,7 @@ flowchart TB
 
 | 構成 | 1件ずつ（トークン/秒） | 16件まとめて（合計トークン/秒） | 5問の正答 | VRAM | KV キャッシュ（トークン） | 準備時間 |
 |---|---|---|---|---|---|---|
-| 08: transformers + bnb 4bit（31B） | 6.1 | - | 5 / 5 | 18.2 GB | - | 約6 分 |
+| 03: transformers + bnb 4bit（31B） | 6.1 | - | 5 / 5 | 18.2 GB | - | 約6 分 |
 | A: vLLM + AWQ 4bit（31B） | **13.3** | **102.9** | 5 / 5 | 19.2 GB（重み 17.5 GiB / KV 1.0 GiB） | 2,337 | 4.6 分 |
 | B: vLLM + AWQ 4bit（26B-A4B MoE） | **53.5** | **402.1** | 5 / 5 | 20.4 GB（重み 15.56 GiB / KV 4.16 GiB） | 39,092 | 4.2 分 |
 
@@ -69,8 +69,8 @@ flowchart TB
 ### 判定
 
 - [x] 構成 A（31B）が vLLM で L4 に載った
-- [x] 構成 A の1件ずつの速さが 08（6.1 トークン/秒）より速い
-- [x] 構成 A の5問の正答数が 08 と同じ（5/5）
+- [x] 構成 A の1件ずつの速さが 03（6.1 トークン/秒）より速い
+- [x] 構成 A の5問の正答数が 03 と同じ（5/5）
 - [x] まとめて聞くと合計の速さが上がる
 
 ### 構成 A: ebircak/gemma-4-31B-it-4bit-W4A16-AWQ
@@ -139,14 +139,14 @@ GPUとVRAMの違いを、小学生にも分かるように説明します。
 
 ### 注意
 
-- 02 / 08 と 03 では、4bit の作り方（bitsandbytes NF4 と AWQ）も違う。速さの差は「vLLM のおかげ」と「量子化の形式のおかげ」の両方を含む
-- 5問は 08 と同じで、31B には易しい問題。答えの質の細かい差（AWQ と NF4、31B と 26B-A4B）は、この5問では測れていない
+- 02 / 03 と 04 では、4bit の作り方（bitsandbytes NF4 と AWQ）も違う。速さの差は「vLLM のおかげ」と「量子化の形式のおかげ」の両方を含む
+- 5問は 03 と同じで、31B には易しい問題。答えの質の細かい差（AWQ と NF4、31B と 26B-A4B）は、この5問では測れていない
 - 使った量子化済みの重みは、Google 公式ではなくコミュニティが作ったもの
 
 ### 次にやるなら
 
 - 26B-A4B で、長い文章（数千トークン）を入れたときの速さと答えを見る
-- vLLM を OpenAI 互換の API サーバーとして立てて、別のプログラムから呼ぶ（→ 07 の RAG・API につながる）
+- vLLM を OpenAI 互換の API サーバーとして立てて、別のプログラムから呼ぶ（→ 候補 08 の RAG・API につながる）
 - 難しい問題で 31B と 26B-A4B の賢さの差を比べる
 
 ---
@@ -158,4 +158,4 @@ GPUとVRAMの違いを、小学生にも分かるように説明します。
 - [これを使うと、何ができるのか](../03-what-you-can-do.md)
 - [ことばの一覧（vLLM・MoE・KV キャッシュ）](../glossary.md)
 
-← 前の実験: [08. thinking のオン・オフ](08_thinking_on_off.md) ｜ [実験の一覧](README.md) ｜ [README](../../README.md)
+← 前の実験: [03. thinking のオン・オフ](03_thinking_on_off.md) ｜ [実験の一覧](README.md) ｜ [README](../../README.md)

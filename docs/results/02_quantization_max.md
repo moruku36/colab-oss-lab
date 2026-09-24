@@ -184,4 +184,4 @@ VRAMは、計算に使うデータを一時的に置いておく「机（作業�
 - [GPU と L4 / A100 の違い（VRAM は作業机）](../05-gpu-basics.md)
 - [OSSモデルを載せると、何ができるのか](../04-oss-models.md)
 
-← 前の実験: [01. L4 の確認と小さいモデル](01_first_run.md) ｜ 次の実験: [08. thinking のオン・オフ](08_thinking_on_off.md) → ｜ [実験の一覧](README.md) ｜ [README](../../README.md)
+← 前の実験: [01. L4 の確認と小さいモデル](01_first_run.md) ｜ 次の実験: [03. thinking のオン・オフ](03_thinking_on_off.md) → ｜ [実験の一覧](README.md) ｜ [README](../../README.md)

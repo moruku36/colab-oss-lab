@@ -1,4 +1,4 @@
-# 08. thinking（考えてから答える）のオン・オフ
+# 03. thinking（考えてから答える）のオン・オフ
 
 ## 結論（先に）
 
@@ -6,9 +6,9 @@
 - ただし **今回の5問では、thinking オンでも正答数は変わらなかった（どちらも 5/5）**。Gemma 4 31B は thinking オフでも途中式を書きながら解くので、この程度の問題なら十分だった
 - thinking オンにすると、**1問あたりの時間が約3.6倍（31秒 → 111秒）**。生成の速さは同じ（約6.1トークン/秒）で、「思考として書く量」が増えた分だけ遅くなる
 - 使い分けの目安: **ふだんはオフ。オフで間違える難しい問題のときだけオンにする**
-- ノート: [notebooks/08_thinking_on_off.ipynb](../../notebooks/08_thinking_on_off.ipynb)
+- ノート: [notebooks/03_thinking_on_off.ipynb](../../notebooks/03_thinking_on_off.ipynb)
 
-![5問すべてで、thinking オンのほうが回答時間が長い。Q2 はオフ 45.2秒に対しオン 161.4秒。正答はどちらも5問中5問](../images/08_thinking_time.svg)
+![5問すべてで、thinking オンのほうが回答時間が長い。Q2 はオフ 45.2秒に対しオン 161.4秒。正答はどちらも5問中5問](../images/03_thinking_time.svg)
 
 ## 検証の流れ
 
@@ -130,7 +130,7 @@ $10 = x$
 
 - 難しい問題セットで、もう一度オン・オフを比べる（差が出る問題を探す）
 - thinking の長さ（思考に使うトークンの上限）を変えて、時間と正答率のバランスを見る
-- 03（vLLM で高速化）で速度が上がれば、thinking オンの待ち時間の問題も小さくなる
+- 04（vLLM で高速化）で速度が上がれば、thinking オンの待ち時間の問題も小さくなる
 
 ---
 
@@ -139,4 +139,4 @@ $10 = x$
 - [OSSモデルを載せると、何ができるのか](../04-oss-models.md)
 - [これを使うと、何ができるのか](../03-what-you-can-do.md)
 
-← 前の実験: [02. 量子化で載る最大モデル](02_quantization_max.md) ｜ 次の実験: [03. vLLM で速くする](03_vllm_speedup.md) → ｜ [実験の一覧](README.md) ｜ [README](../../README.md)
+← 前の実験: [02. 量子化で載る最大モデル](02_quantization_max.md) ｜ 次の実験: [04. vLLM で速くする](04_vllm_speedup.md) → ｜ [実験の一覧](README.md) ｜ [README](../../README.md)

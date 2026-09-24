@@ -69,7 +69,7 @@ AIが扱う言葉の破片。文字そのものではない。
 家のPCでモデルを動かすためのソフトの一つ。
 
 **vLLM**
-会話を速く、同時にたくさんさばくための推論専用のソフト。[実験03](results/03_vllm_speedup.md) で transformers より 2.2 倍速かった。
+会話を速く、同時にたくさんさばくための推論専用のソフト。[実験04](results/04_vllm_speedup.md) で transformers より 2.2 倍速かった。
 
 **AWQ**
 量子化の方式の一つ。量子化済みの重みを配っておき、vLLM などで速く動かす。
@@ -81,7 +81,7 @@ AIが扱う言葉の破片。文字そのものではない。
 会話の途中経過を覚えておくための GPU メモリ。長い会話や同時にたくさんの会話をするほど必要になる。
 
 **thinking（思考モード）**
-答える前に、モデルが自分用のメモ（思考）を書いてから答えるモード。難しい問題に強いが、遅くなる。[実験08](results/08_thinking_on_off.md)
+答える前に、モデルが自分用のメモ（思考）を書いてから答えるモード。難しい問題に強いが、遅くなる。[実験03](results/03_thinking_on_off.md)
 
 
 ---
@@ -89,5 +89,5 @@ AIが扱う言葉の破片。文字そのものではない。
 ## 関連する実験
 
 - [02. 量子化で載る最大モデル](results/02_quantization_max.md) … 量子化・VRAM
-- [08. thinking のオン・オフ](results/08_thinking_on_off.md) … thinking
-- [03. vLLM で速くする](results/03_vllm_speedup.md) … vLLM・AWQ・MoE・KV キャッシュ
+- [03. thinking のオン・オフ](results/03_thinking_on_off.md) … thinking
+- [04. vLLM で速くする](results/04_vllm_speedup.md) … vLLM・AWQ・MoE・KV キャッシュ

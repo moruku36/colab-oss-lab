@@ -81,5 +81,5 @@ Colabの機械は共有の借り物です。消える前提で使います。
 
 - [01. L4 の確認と小さいモデル](results/01_first_run.md) … 1.5B の小さいモデル。動くが、日本語の説明は不正確
 - [02. 量子化で載る最大モデル](results/02_quantization_max.md) … 31B を 4bit で L4 に載せた（上の表の「27B以上」も、推論だけなら 31B まで載った）
-- [08. thinking のオン・オフ](results/08_thinking_on_off.md) … Gemma 4 の thinking の使い分け
-- [03. vLLM で速くする](results/03_vllm_speedup.md) … MoE（26B-A4B）は 31B の 4 倍速い。L4 の普段使いのおすすめ
+- [03. thinking のオン・オフ](results/03_thinking_on_off.md) … Gemma 4 の thinking の使い分け
+- [04. vLLM で速くする](results/04_vllm_speedup.md) … MoE（26B-A4B）は 31B の 4 倍速い。L4 の普段使いのおすすめ

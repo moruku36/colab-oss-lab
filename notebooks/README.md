@@ -28,11 +28,11 @@
 2. VRAM 使用量と生成速度を測る
 3. 日本語で2問聞き、「想定どおり動いたか」を判定する
 
-## 08. thinking（考えてから答える）のオン・オフを比べる
+## 03. thinking（考えてから答える）のオン・オフを比べる
 
-- ファイル: [08_thinking_on_off.ipynb](08_thinking_on_off.ipynb)
-- [Colab で開く](https://colab.research.google.com/github/moruku36/colab-oss-lab/blob/main/notebooks/08_thinking_on_off.ipynb)
-- 結果の置き場: [docs/results/08_thinking_on_off.md](../docs/results/08_thinking_on_off.md)
+- ファイル: [03_thinking_on_off.ipynb](03_thinking_on_off.ipynb)
+- [Colab で開く](https://colab.research.google.com/github/moruku36/colab-oss-lab/blob/main/notebooks/03_thinking_on_off.ipynb)
+- 結果の置き場: [docs/results/03_thinking_on_off.md](../docs/results/03_thinking_on_off.md)
 
 内容:
 
@@ -40,14 +40,14 @@
 2. 答えが決まっている5問を、thinking オフ / オン で解かせる
 3. 正答数・時間・トークン数・VRAM を比べる
 
-## 03. vLLM で速くする
+## 04. vLLM で速くする
 
-- ファイル: [03_vllm_speedup.ipynb](03_vllm_speedup.ipynb)
-- [Colab で開く](https://colab.research.google.com/github/moruku36/colab-oss-lab/blob/main/notebooks/03_vllm_speedup.ipynb)
-- 結果の置き場: [docs/results/03_vllm_speedup.md](../docs/results/03_vllm_speedup.md)
+- ファイル: [04_vllm_speedup.ipynb](04_vllm_speedup.ipynb)
+- [Colab で開く](https://colab.research.google.com/github/moruku36/colab-oss-lab/blob/main/notebooks/04_vllm_speedup.ipynb)
+- 結果の置き場: [docs/results/04_vllm_speedup.md](../docs/results/04_vllm_speedup.md)
 
 内容:
 
 1. vLLM を入れる
 2. Gemma 4 31B（AWQ 4bit）と Gemma 4 26B-A4B（MoE、AWQ 4bit）を vLLM で動かす
-3. 1件ずつ / 16件まとめての速さ、08 と同じ5問の正答数、VRAM を測り、08（transformers + bitsandbytes）と比べる
+3. 1件ずつ / 16件まとめての速さ、03 と同じ5問の正答数、VRAM を測り、03（transformers + bitsandbytes）と比べる
