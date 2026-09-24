@@ -39,3 +39,15 @@
 1. 02 と同じ `google/gemma-4-31B-it`（4bit）を L4 に載せる
 2. 答えが決まっている5問を、thinking オフ / オン で解かせる
 3. 正答数・時間・トークン数・VRAM を比べる
+
+## 03. vLLM で速くする
+
+- ファイル: [03_vllm_speedup.ipynb](03_vllm_speedup.ipynb)
+- [Colab で開く](https://colab.research.google.com/github/moruku36/colab-oss-lab/blob/main/notebooks/03_vllm_speedup.ipynb)
+- 結果の置き場: [docs/results/03_vllm_speedup.md](../docs/results/03_vllm_speedup.md)
+
+内容:
+
+1. vLLM を入れる
+2. Gemma 4 31B（AWQ 4bit）と Gemma 4 26B-A4B（MoE、AWQ 4bit）を vLLM で動かす
+3. 1件ずつ / 16件まとめての速さ、08 と同じ5問の正答数、VRAM を測り、08（transformers + bitsandbytes）と比べる
