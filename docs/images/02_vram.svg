@@ -10,7 +10,7 @@
 
     <text x="24" y="146">4bit 量子化後</text>
     <rect x="140" y="128" width="159" height="28" rx="4" fill="#1a7f37"/>
-    <text x="308" y="147" font-weight="bold" fill="#1a7f37">16.6 GB　載る</text>
+    <text x="364" y="147" font-weight="bold" fill="#1a7f37">16.6 GB　載る</text>
   </g>
 
   <!-- L4 line at 22GB = 140+211 -->

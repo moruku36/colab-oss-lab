@@ -11,29 +11,22 @@
 ## 検証の構成図
 
 ```mermaid
-flowchart LR
-    subgraph PC["自分のPC"]
-        B["ブラウザ<br/>（Colab の画面）"]
-    end
-    subgraph GH["GitHub<br/>moruku36/colab-oss-lab"]
-        NB["ノート 02<br/>.ipynb"]
-        RES["結果<br/>docs/results/02_…md"]
-    end
-    subgraph HF["Hugging Face"]
-        M["google/gemma-4-31B-it<br/>bf16 · 62.5GB"]
-    end
-    subgraph COLAB["Google Colab ランタイム（L4 · High-RAM）"]
+flowchart TB
+    NB["📓 GitHub のノート 02<br/>02_quantize_largest_model_on_l4.ipynb"]
+    B["💻 自分のPCのブラウザ<br/>Colab で開いて「すべて実行」"]
+    subgraph COLAB["☁️ Google Colab ランタイム（L4 · High-RAM 53GB）"]
         direction TB
-        DISK["ディスク<br/>188GB 空き"]
-        BNB["bitsandbytes<br/>4bit NF4 に変換"]
-        GPU["NVIDIA L4<br/>VRAM 22GB<br/>使用 17.0GB"]
-        GEN["日本語で2問<br/>速度・VRAMを計測"]
+        DISK["① ディスクに保存<br/>bf16 の重み 62.5GB"]
+        BNB["② bitsandbytes で 4bit（NF4）に変換"]
+        GPU["③ NVIDIA L4 に全部載せる<br/>VRAM 17.0GB / 22GB"]
+        GEN["④ 日本語で2問 → 速度・VRAM を計測<br/>4つの基準で自動判定"]
         DISK --> BNB --> GPU --> GEN
     end
-    NB -- "Colab で開く" --> B
-    B -- "すべてのセルを実行" --> COLAB
-    M -- "ダウンロード 約3分" --> DISK
-    GEN -- "実行記録（判定つき）" --> RES
+    HF["🤗 Hugging Face<br/>google/gemma-4-31B-it"]
+    RES["📄 GitHub の結果ページ<br/>docs/results/02_quantization_max.md"]
+    NB --> B --> COLAB
+    HF -- "ダウンロード 約3分" --> DISK
+    GEN -- "実行記録" --> RES
 ```
 
 ## 量子化で何が変わったか
