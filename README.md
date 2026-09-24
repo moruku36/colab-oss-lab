@@ -41,6 +41,8 @@ Google Colab（Google AI Pro の特典）で、公開されているAIモデル�
 | 01 | Qwen2.5-1.5B-Instruct | 1.5B（量子化なし） | 小さい | 動いたが日本語の説明は不正確 |
 | 02 | Gemma 4 31B-it | 31B（4bit） | 17.0GB / 22GB | 想定どおり。説明も計算も正確 |
 
+次に試せそうなこと: [次の実験の候補](docs/next-experiments.md)（高速化・量子化の比較・QLoRA での追加学習 など）
+
 ---
 
 ## いちばん短い説明
