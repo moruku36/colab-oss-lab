@@ -82,3 +82,4 @@ GPUを上げることより、載るサイズの良いモデルを選ぶ方が�
 - [01. L4 の確認と小さいモデル](results/01_first_run.md) … L4 の VRAM を実際に確認（22.0GB）
 - [02. 量子化で載る最大モデル](results/02_quantization_max.md) … VRAM という「机」に 31B をどう載せたか（図つき）
 - [04. vLLM で速くする](results/04_vllm_speedup.md) … 机がぎりぎりだと、会話の記憶（KV キャッシュ）の置き場がなくなる
+- [05. 量子化の方式・ビット数を比べる](results/05_quantization_compare.md) … 8B のモデルが 15.3GB → 5.7GB（4bit）になり、机の使い方がどう変わるか

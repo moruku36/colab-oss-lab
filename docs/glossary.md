@@ -83,6 +83,9 @@ AIが扱う言葉の破片。文字そのものではない。
 **thinking（思考モード）**
 答える前に、モデルが自分用のメモ（思考）を書いてから答えるモード。難しい問題に強いが、遅くなる。[実験03](results/03_thinking_on_off.md)
 
+**PPL（パープレキシティ）**  
+文章を読ませて「次の言葉」をどれだけ正しく予想できるかの数字。小さいほど良い。量子化で賢さが落ちたかを比べるのに使う。[実験05](results/05_quantization_compare.md)
+
 
 ---
 
@@ -91,3 +94,4 @@ AIが扱う言葉の破片。文字そのものではない。
 - [02. 量子化で載る最大モデル](results/02_quantization_max.md) … 量子化・VRAM
 - [03. thinking のオン・オフ](results/03_thinking_on_off.md) … thinking
 - [04. vLLM で速くする](results/04_vllm_speedup.md) … vLLM・AWQ・MoE・KV キャッシュ
+- [05. 量子化の方式・ビット数を比べる](results/05_quantization_compare.md) … 量子化・PPL

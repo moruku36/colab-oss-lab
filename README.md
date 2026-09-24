@@ -30,14 +30,15 @@ Google Colab（Google AI Pro の特典）で、公開されているAIモデル�
 
 ## これまでの実験
 
-実験の番号は、**行った順**に付けています（01 → 02 → 03 → 04）。
+実験の番号は、**行った順**に付けています（01 → 02 → 03 → 04 → 05）。
 
 ```mermaid
 flowchart LR
     E01["01<br/>L4 を確認して<br/>小さいモデルを動かす"] --> E02["02<br/>4bit 量子化で<br/>31B を L4 に載せる"]
     E02 --> E03["03<br/>thinking の<br/>オン・オフを比べる"]
     E03 --> E04["04<br/>vLLM で<br/>速くする"]
-    E04 -.-> NEXT["次の候補<br/>QLoRA / RAG・API など"]
+    E04 --> E05["05<br/>量子化の方式・<br/>ビット数を比べる"]
+    E05 -.-> NEXT["次の候補<br/>QLoRA / RAG・API など"]
 ```
 
 | # | 実験 | 使ったモデル | 結果（ひとこと） | 記録 | ノート | 関連する解説 |
@@ -46,6 +47,7 @@ flowchart LR
 | 02 | 量子化で L4 に載る「いちばん大きいモデル」 | Gemma 4 31B-it（bitsandbytes 4bit） | 62.5GB → 16.6GB。VRAM 17.0GB で載り、説明も計算も正確。ChatGPT でいうと o3 / o4-mini くらい | [記録と構成図](docs/results/02_quantization_max.md) | [ipynb](notebooks/02_quantize_largest_model_on_l4.ipynb) / [Colab](<https://colab.research.google.com/github/moruku36/colab-oss-lab/blob/main/notebooks/02_quantize_largest_model_on_l4.ipynb>) | [量子化](docs/06-quantization.md)・[GPU](docs/05-gpu-basics.md)・[OSSモデル](docs/04-oss-models.md) |
 | 03 | thinking（考えてから答える）のオン・オフ | Gemma 4 31B-it（4bit） | 5問ともどちらも正解。オンは約3.6倍遅い → 普段はオフで十分 | [記録](docs/results/03_thinking_on_off.md) | [ipynb](notebooks/03_thinking_on_off.ipynb) / [Colab](<https://colab.research.google.com/github/moruku36/colab-oss-lab/blob/main/notebooks/03_thinking_on_off.ipynb>) | [OSSモデル](docs/04-oss-models.md) |
 | 04 | vLLM で速くする | Gemma 4 31B-it / 26B-A4B（vLLM + AWQ 4bit） | 31B は 2.2倍（13.3 トークン/秒）、MoE の 26B-A4B は 8.8倍（53.5）。正答は同じ | [記録と構成図](docs/results/04_vllm_speedup.md) | [ipynb](notebooks/04_vllm_speedup.ipynb) / [Colab](<https://colab.research.google.com/github/moruku36/colab-oss-lab/blob/main/notebooks/04_vllm_speedup.ipynb>) | [量子化](docs/06-quantization.md)・[何ができるか](docs/03-what-you-can-do.md)・[GPU](docs/05-gpu-basics.md) |
+| 05 | 量子化の方式・ビット数を比べる | Qwen3-8B（bf16 / bnb 8bit・4bit / HQQ 4・3・2bit） | 4bit までは賢さほぼ同じ（VRAM 約 1/3）。3bit で崩れ始め、2bit は壊れる | [記録](docs/results/05_quantization_compare.md) | [ipynb](notebooks/05_quantization_compare.ipynb) / [Colab](<https://colab.research.google.com/github/moruku36/colab-oss-lab/blob/main/notebooks/05_quantization_compare.ipynb>) | [量子化](docs/06-quantization.md)・[GPU](docs/05-gpu-basics.md) |
 
 ### 実験から分かったこと
 
@@ -56,6 +58,7 @@ flowchart LR
 | 易しい問題なら thinking は不要。オンにすると思考を書く分だけ遅くなる | [03](docs/results/03_thinking_on_off.md) |
 | 速さは「エンジン（vLLM）」と「モデルの型（MoE）」で大きく変わる。bitsandbytes は載せるのは得意だが遅い | [04](docs/results/04_vllm_speedup.md) |
 | 31B を vLLM で動かすと、会話の記憶（KV キャッシュ）がほとんど残らない。L4 1枚の普段使いは **vLLM + Gemma 4 26B-A4B（AWQ 4bit）** がおすすめ | [04](docs/results/04_vllm_speedup.md) |
+| 量子化は 4bit が落としどころ。8bit はほぼ劣化なしだが遅い、3bit 以下は崩れる。普段は bitsandbytes NF4 | [05](docs/results/05_quantization_compare.md) |
 
 - 実験の一覧（詳しい版）: [docs/results/](docs/results/README.md)
 - 次に試せそうなこと: [次の実験の候補](docs/next-experiments.md)（QLoRA での追加学習、RAG・API、量子化の比較 など）

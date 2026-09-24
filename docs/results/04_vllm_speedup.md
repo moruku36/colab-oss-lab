@@ -158,4 +158,4 @@ GPUとVRAMの違いを、小学生にも分かるように説明します。
 - [これを使うと、何ができるのか](../03-what-you-can-do.md)
 - [ことばの一覧（vLLM・MoE・KV キャッシュ）](../glossary.md)
 
-← 前の実験: [03. thinking のオン・オフ](03_thinking_on_off.md) ｜ [実験の一覧](README.md) ｜ [README](../../README.md)
+← 前の実験: [03. thinking のオン・オフ](03_thinking_on_off.md) ｜ 次の実験: [05. 量子化の方式・ビット数を比べる](05_quantization_compare.md) → ｜ [実験の一覧](README.md) ｜ [README](../../README.md)

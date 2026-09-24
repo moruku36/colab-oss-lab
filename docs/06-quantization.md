@@ -51,3 +51,4 @@
 
 - [02. 量子化で載る最大モデル](results/02_quantization_max.md) … bitsandbytes（NF4）の 4bit で 62.5GB → 16.6GB。どこまで載るかの見積もり方
 - [04. vLLM で速くする](results/04_vllm_speedup.md) … AWQ の 4bit を vLLM で使うと、bitsandbytes より速い（上の「今の方針」の 3 を実際に試した）
+- [05. 量子化の方式・ビット数を比べる](results/05_quantization_compare.md) … 同じモデルで bf16 / 8bit / 4bit / 3bit / 2bit を比べた。上の「ビットが小さいほど何が起きるか」を数字で確かめた
