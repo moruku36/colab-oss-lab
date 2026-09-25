@@ -14,6 +14,7 @@ Colab（L4）で実際に動かした実験の記録です。番号は行った�
 | 07 | L4 の上限を探る（Qwen3-32B / Seed-OSS-36B） | 2026-09-25 | はい | [07_l4_limit.md](07_l4_limit.md) | [ipynb](../../notebooks/07_l4_limit.ipynb) |
 | 08 | RAG・API を作る（Gemma 4 26B-A4B + 資料検索） | 2026-09-25 | いいえ（5つ中3つ合格。正答 64%、検索 76%） | [08_rag_api.md](08_rag_api.md) | [ipynb](../../notebooks/08_rag_api.ipynb) |
 | 09 | 画像も入れてみる（Gemma 4 26B-A4B + 画像） | 2026-09-25 | はい | [09_image_input.md](09_image_input.md) | [ipynb](../../notebooks/09_image_input.ipynb) |
+| 10 | RAG の検索をよくする（埋め込み・BM25・リランカー・言い換え） | 2026-09-25 | いいえ（4つ中3つ合格。検索 92% は達成、正答は 72%、見直すと 84%） | [10_rag_retrieval.md](10_rag_retrieval.md) | [ipynb](../../notebooks/10_rag_retrieval.ipynb) |
 
 ## 数字でくらべる
 
@@ -48,5 +49,6 @@ Colab（L4）で実際に動かした実験の記録です。番号は行った�
 - [L4 の上限（VRAM と文章の長さ）](../images/07_l4_limit.svg) … [07](07_l4_limit.md)
 - [RAG と LoRA の正答率・API の速さ](../images/08_rag_api.svg) … [08](08_rag_api.md)
 - [画像の読み取りと、画像の細かさ](../images/09_image_input.svg) … [09](09_image_input.md)
+- [RAG の検索のやり方ごとの検索・正答率](../images/10_rag_retrieval.svg) … [10](10_rag_retrieval.md)
 
 次に試せそうなこと: [次の実験の候補](../next-experiments.md)

@@ -30,7 +30,7 @@ Google Colab（Google AI Pro の特典）で、公開されているAIモデル�
 
 ## これまでの実験
 
-実験の番号は、**行った順**に付けています（01 → 02 → 03 → 04 → 05 → 06 → 07 → 08 → 09）。
+実験の番号は、**行った順**に付けています（01 → 02 → 03 → 04 → 05 → 06 → 07 → 08 → 09 → 10）。
 
 ```mermaid
 flowchart LR
@@ -42,7 +42,8 @@ flowchart LR
     E06 --> E07["07<br/>L4 の上限を<br/>探る"]
     E07 --> E08["08<br/>RAG・API を<br/>作る"]
     E08 --> E09["09<br/>画像も<br/>入れてみる"]
-    E09 -.-> NEXT["次の候補<br/>検索の改善・難しい画像 など"]
+    E09 --> E10["10<br/>RAG の検索を<br/>よくする"]
+    E10 -.-> NEXT["次の候補<br/>難しい画像・RAG の答え方 など"]
 ```
 
 | # | 実験 | 使ったモデル | 結果（ひとこと） | 記録 | ノート | 関連する解説 |
@@ -56,6 +57,7 @@ flowchart LR
 | 07 | L4 の上限を探る | Qwen3-32B / Seed-OSS-36B（4bit NF4） | GPU だけに載る上限は 36B（空き 1.9GB）。文章の長さは 32B で 4K、36B で 2K まで。36B MoE は載らない | [記録](docs/results/07_l4_limit.md) | [ipynb](notebooks/07_l4_limit.ipynb) / [Colab](<https://colab.research.google.com/github/moruku36/colab-oss-lab/blob/main/notebooks/07_l4_limit.ipynb>) | [GPU](docs/05-gpu-basics.md)・[OSSモデル](docs/04-oss-models.md) |
 | 08 | RAG・API を作る | Gemma 4 26B-A4B（vLLM の OpenAI 互換 API）+ 資料検索 | 06 と同じ 25 問で 64%（LoRA は 44%）。資料にない質問は 5/5 で「記載がありません」。同時に聞くと 3.4 倍速い | [記録](docs/results/08_rag_api.md) | [ipynb](notebooks/08_rag_api.ipynb) / [Colab](<https://colab.research.google.com/github/moruku36/colab-oss-lab/blob/main/notebooks/08_rag_api.ipynb>) | [何ができるか](docs/03-what-you-can-do.md)・[OSSモデル](docs/04-oss-models.md) |
 | 09 | 画像も入れてみる | Gemma 4 26B-A4B（vLLM + AWQ 4bit、画像の部品あり） | グラフ・日本語のレシート・スクショ・図形・写真の 14 問すべて正解、1 問 0.35 秒。小さい字は画像の細かさを上げると読める | [記録](docs/results/09_image_input.md) | [ipynb](notebooks/09_image_input.ipynb) / [Colab](<https://colab.research.google.com/github/moruku36/colab-oss-lab/blob/main/notebooks/09_image_input.ipynb>) | [何ができるか](docs/03-what-you-can-do.md)・[OSSモデル](docs/04-oss-models.md) |
+| 10 | RAG の検索をよくする | Gemma 4 26B-A4B + e5-large・BM25・リランカー（bge-reranker-v2-m3） | リランカーで検索 76% → 92%、正答 64% → 72%（見直すと 84%）。リポジトリ名を外す・質問の言い換えは効かなかった | [記録](docs/results/10_rag_retrieval.md) | [ipynb](notebooks/10_rag_retrieval.ipynb) / [Colab](<https://colab.research.google.com/github/moruku36/colab-oss-lab/blob/main/notebooks/10_rag_retrieval.ipynb>) | [何ができるか](docs/03-what-you-can-do.md) |
 
 ### 実験から分かったこと
 
@@ -68,10 +70,11 @@ flowchart LR
 | 31B を vLLM で動かすと、会話の記憶（KV キャッシュ）がほとんど残らない。L4 1枚の普段使いは **vLLM + Gemma 4 26B-A4B（AWQ 4bit）** がおすすめ | [04](docs/results/04_vllm_speedup.md) |
 | 量子化は 4bit が落としどころ。8bit はほぼ劣化なしだが遅い、3bit 以下は崩れる。普段は bitsandbytes NF4 | [05](docs/results/05_quantization_compare.md) |
 | LoRA は「書き方・口調」はすぐ覚えるが、「新しい事実」は苦手（44%）。事実は RAG（資料検索）の方が正確で（64%）、知らないことは「記載がありません」と言える | [06](docs/results/06_qlora.md)・[08](docs/results/08_rag_api.md) |
+| RAG の検索は「リランカー（並べ直し）」が一番効く（検索 76% → 92%）。検索が良くなった後の外れは、答える側の取り違えと資料の書き方 | [10](docs/results/10_rag_retrieval.md) |
 | 同じ 26B-A4B に画像の部品（+1.1GiB）を足すだけで、グラフ・表・スクショ・日本語の文字を読める。小さい字は「画像の細かさ（トークン数）」しだい | [09](docs/results/09_image_input.md) |
 
 - 実験の一覧（詳しい版）: [docs/results/](docs/results/README.md)
-- 次に試せそうなこと: [次の実験の候補](docs/next-experiments.md)（RAG の検索の改善、難しい画像 など）
+- 次に試せそうなこと: [次の実験の候補](docs/next-experiments.md)（難しい画像、RAG の答え方の改善 など）
 
 ---
 

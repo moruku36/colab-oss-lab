@@ -175,4 +175,4 @@ flowchart LR
 - [OSSモデルを載せると、何ができるのか](../04-oss-models.md)
 - [ことばの一覧（マルチモーダル・画像トークン）](../glossary.md)
 
-← 前の実験: [08. RAG・API を作る](08_rag_api.md) ｜ [実験の一覧](README.md) ｜ [README](../../README.md)
+← 前の実験: [08. RAG・API を作る](08_rag_api.md) ｜ 次の実験: [10. RAG の検索をよくする](10_rag_retrieval.md) → ｜ [実験の一覧](README.md) ｜ [README](../../README.md)

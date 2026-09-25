@@ -112,3 +112,15 @@
 1. vLLM で Gemma 4 26B-A4B を画像の部品つきで API サーバーとして起動する（08 から `--language-model-only` を外し、`--max-num-batched-tokens` を 4096 に）
 2. 答えが分かっている画像（グラフ・レシート・スクショ・図形・計算・このリポジトリの図・写真）を作り、`image_url` で送って 14 問を採点する
 3. 画像 1 枚のトークン数、速さ、メモリ、画像の細かさ（70 / 280 / 1120 トークン）による小さい字の読み取りの差を測る
+
+## 10. RAG の検索をよくする
+
+- ファイル: [10_rag_retrieval.ipynb](10_rag_retrieval.ipynb)
+- [Colab で開く](https://colab.research.google.com/github/moruku36/colab-oss-lab/blob/main/notebooks/10_rag_retrieval.ipynb)
+- 結果の置き場: [docs/results/10_rag_retrieval.md](../docs/results/10_rag_retrieval.md)
+
+内容:
+
+1. 08 と同じモデル・資料（コミット `e4570f0` に固定）・質問で、検索のやり方だけを A〜F の 6 段階で変える
+2. リポジトリ名を外す → 大きい埋め込み（e5-large）→ BM25 とのハイブリッド → リランカー（bge-reranker-v2-m3）→ 質問の言い換え
+3. それぞれで検索（1 位・上位 5・上位 10・MRR）、RAG の正答率、資料にない質問で断れるか、検索の時間を測る
