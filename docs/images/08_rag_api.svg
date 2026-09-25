@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 420" font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',Meiryo,sans-serif">
+<rect width="860" height="420" rx="12" fill="#ffffff"/>
+<text x="24" y="36" font-size="20" font-weight="bold" fill="#1f2328">知識を答えさせるなら、学習（LoRA）より資料検索（RAG）</text>
+<text x="24" y="58" font-size="13" fill="#57606a">06 と同じ 25 問（学習に使っていない聞き方）/ Gemma 4 26B-A4B（vLLM API）/ Qwen3-8B + LoRA（06）</text>
+<text x="24" y="92" font-size="15" font-weight="bold" fill="#1f2328">正答率</text>
+<text x="24" y="116" font-size="14" fill="#1f2328">モデルの知識だけ</text>
+<text x="24" y="133" font-size="11" fill="#57606a">RAG なし</text>
+<rect x="250" y="104" width="420" height="22" rx="3" fill="#eaeef2"/>
+<rect x="250" y="104" width="34" height="22" rx="3" fill="#8c959f"/>
+<text x="292" y="120" font-size="13" font-weight="bold" fill="#8c959f">8%</text>
+<text x="24" y="160" font-size="14" fill="#1f2328">LoRA で覚えさせた（06）</text>
+<text x="24" y="177" font-size="11" fill="#57606a">Qwen3-8B、聞き方 2 通り × 5 周</text>
+<rect x="250" y="148" width="420" height="22" rx="3" fill="#eaeef2"/>
+<rect x="250" y="148" width="185" height="22" rx="3" fill="#bf8700"/>
+<text x="443" y="164" font-size="13" font-weight="bold" fill="#bf8700">44%（作り話あり）</text>
+<text x="24" y="204" font-size="14" fill="#1f2328">資料を検索して答える</text>
+<text x="24" y="221" font-size="11" fill="#57606a">RAG あり（上位 5 段落）</text>
+<rect x="250" y="192" width="420" height="22" rx="3" fill="#eaeef2"/>
+<rect x="250" y="192" width="269" height="22" rx="3" fill="#0969da"/>
+<text x="527" y="208" font-size="13" font-weight="bold" fill="#0969da">64%（目で見直すと 72%）</text>
+<text x="250" y="244" font-size="11" fill="#57606a">外した 9 問のうち 6 問は検索ミス。4 問は「記載がありません」と正直に答えた</text>
+<line x1="24" y1="266" x2="836" y2="266" stroke="#d0d7de"/>
+<text x="24" y="292" font-size="15" font-weight="bold" fill="#1f2328">資料にない質問（5 問）</text>
+<circle cx="260" cy="287" r="8" fill="#1a7f37"/>
+<circle cx="282" cy="287" r="8" fill="#1a7f37"/>
+<circle cx="304" cy="287" r="8" fill="#1a7f37"/>
+<circle cx="326" cy="287" r="8" fill="#1a7f37"/>
+<circle cx="348" cy="287" r="8" fill="#1a7f37"/>
+<text x="370" y="292" font-size="13" font-weight="bold" fill="#1a7f37">5 / 5 で「資料に記載がありません」と答えた</text>
+<text x="24" y="326" font-size="15" font-weight="bold" fill="#1f2328">API で 25 問を聞く時間</text>
+<text x="24" y="353" font-size="13" fill="#1f2328">1 件ずつ順番に</text>
+<rect x="250" y="340" width="420" height="20" rx="3" fill="#8c959f"/>
+<text x="678" y="355" font-size="13" font-weight="bold" fill="#8c959f">19.3 秒</text>
+<text x="24" y="381" font-size="13" fill="#1f2328">25 件を同時に</text>
+<rect x="250" y="368" width="124" height="20" rx="3" fill="#0969da"/>
+<text x="382" y="383" font-size="13" font-weight="bold" fill="#0969da">5.7 秒</text>
+<text x="250" y="402" font-size="11" fill="#57606a">同時に聞くと 3.4 倍速い（合計 163.8 トークン/秒）。1 問あたり約 0.9 秒。</text>
+</svg>

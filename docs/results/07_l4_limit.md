@@ -144,4 +144,4 @@ VRAMは、GPUが今すぐ使うデータ（例：キャラクターの形や色�
 - [OSSモデルを載せると、何ができるのか（載せられるものの目安）](../04-oss-models.md)
 - [量子化とは何か](../06-quantization.md)
 
-← 前の実験: [06. QLoRA で追加学習する](06_qlora.md) ｜ [実験の一覧](README.md) ｜ [README](../../README.md)
+← 前の実験: [06. QLoRA で追加学習する](06_qlora.md) ｜ 次の実験: [08. RAG・API を作る](08_rag_api.md) → ｜ [実験の一覧](README.md) ｜ [README](../../README.md)

@@ -96,3 +96,4 @@ Colab（借り物の厨房）で味見・調整
 - [03. thinking のオン・オフ](results/03_thinking_on_off.md) … 考えてから答えるモード（thinking）の効果と待ち時間
 - [04. vLLM で速くする](results/04_vllm_speedup.md) … 会話を速くする・同時にたくさんさばく（API サーバーの手前）
 - [06. QLoRA で追加学習する](results/06_qlora.md) … 「自分のデータで少しだけ教える（LoRA）」を実際にやった。書き方はすぐ覚えるが、事実を正確に使わせるのは難しい
+- [08. RAG・API を作る](results/08_rag_api.md) … 自分の資料を検索して答える仕組みと、ChatGPT と同じ書き方で呼べる API を Colab 上に作った

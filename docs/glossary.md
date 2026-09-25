@@ -86,6 +86,15 @@ AIが扱う言葉の破片。文字そのものではない。
 **PPL（パープレキシティ）**  
 文章を読ませて「次の言葉」をどれだけ正しく予想できるかの数字。小さいほど良い。量子化で賢さが落ちたかを比べるのに使う。[実験05](results/05_quantization_compare.md)
 
+**RAG（検索拡張生成）**  
+質問に関係する資料を検索して、その資料をモデルに渡して答えさせる方法。モデルは学習しない。[実験08](results/08_rag_api.md)
+
+**API / OpenAI 互換 API**  
+プログラムからモデルを呼び出す窓口。vLLM は ChatGPT の API と同じ形で呼べるサーバーを立てられる。[実験08](results/08_rag_api.md)
+
+**埋め込み（エンベディング）**  
+文章を数字の並び（ベクトル）に変えること。意味が近い文章ほど近い数字になるので、検索に使う。
+
 
 ---
 
@@ -96,3 +105,4 @@ AIが扱う言葉の破片。文字そのものではない。
 - [04. vLLM で速くする](results/04_vllm_speedup.md) … vLLM・AWQ・MoE・KV キャッシュ
 - [05. 量子化の方式・ビット数を比べる](results/05_quantization_compare.md) … 量子化・PPL
 - [06. QLoRA で追加学習する](results/06_qlora.md) … LoRA / QLoRA
+- [08. RAG・API を作る](results/08_rag_api.md) … RAG・API・埋め込み
