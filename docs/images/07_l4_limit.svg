@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 336" font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',Meiryo,sans-serif">
+<rect width="860" height="336" rx="12" fill="#ffffff"/>
+<text x="24" y="36" font-size="20" font-weight="bold" fill="#1f2328">L4 に 4bit で載る上限は 36B（密）。残りの机で文章の長さが決まる</text>
+<text x="24" y="58" font-size="13" fill="#57606a">transformers + bitsandbytes 4bit NF4 / GPU だけに載せる / 数字は GB（torch の GiB）</text>
+<rect x="250" y="72" width="14" height="12" fill="#0969da"/><text x="270" y="82" font-size="12" fill="#1f2328">モデル本体</text>
+<rect x="360" y="72" width="14" height="12" fill="#bf8700"/><text x="380" y="82" font-size="12" fill="#1f2328">長い文章を入れたときの追加分</text>
+<rect x="580" y="72" width="14" height="12" fill="#eaeef2" stroke="#d0d7de"/><text x="600" y="82" font-size="12" fill="#1f2328">空き</text>
+<text x="24" y="119" font-size="14" fill="#1f2328">Gemma 4 31B（実験02）</text>
+<text x="24" y="136" font-size="11" fill="#57606a">31.3B 密</text>
+<rect x="250" y="106" width="431" height="24" fill="#eaeef2" stroke="#d0d7de"/>
+<rect x="250" y="106" width="333" height="24" fill="#0969da"/>
+<text x="258" y="123" font-size="12" font-weight="bold" fill="#ffffff">17.00 GB</text>
+<text x="689" y="123" font-size="11" fill="#57606a">文章の長さは測っていない</text>
+<text x="24" y="167" font-size="14" fill="#1f2328">Qwen3-32B</text>
+<text x="24" y="184" font-size="11" fill="#57606a">32.8B 密</text>
+<rect x="250" y="154" width="431" height="24" fill="#eaeef2" stroke="#d0d7de"/>
+<rect x="250" y="154" width="351" height="24" fill="#0969da"/>
+<text x="258" y="171" font-size="12" font-weight="bold" fill="#ffffff">17.92 GB</text>
+<rect x="601" y="154" width="36" height="24" fill="#bf8700"/>
+<text x="689" y="165" font-size="12" font-weight="bold" fill="#1f2328">最大 4,096 トークン</text>
+<text x="689" y="180" font-size="11" fill="#57606a">8,192 でメモリ不足</text>
+<text x="24" y="215" font-size="14" fill="#1f2328">Seed-OSS-36B</text>
+<text x="24" y="232" font-size="11" fill="#57606a">36.2B 密</text>
+<rect x="250" y="202" width="431" height="24" fill="#eaeef2" stroke="#d0d7de"/>
+<rect x="250" y="202" width="385" height="24" fill="#0969da"/>
+<text x="258" y="219" font-size="12" font-weight="bold" fill="#ffffff">19.64 GB</text>
+<rect x="635" y="202" width="21" height="24" fill="#bf8700"/>
+<text x="689" y="213" font-size="12" font-weight="bold" fill="#1f2328">最大 2,048 トークン</text>
+<text x="689" y="228" font-size="11" fill="#57606a">4,096 でメモリ不足</text>
+<text x="24" y="263" font-size="14" fill="#1f2328">Qwen3.5-35B-A3B</text>
+<text x="24" y="280" font-size="11" fill="#57606a">36B MoE（試算）</text>
+<rect x="250" y="250" width="431" height="24" fill="#cf222e" opacity="0.85"/>
+<text x="258" y="267" font-size="12" font-weight="bold" fill="#ffffff">約 68GB → 載らない（専門家が 4bit にならない）</text>
+<line x1="681" y1="96" x2="681" y2="286" stroke="#cf222e" stroke-width="2" stroke-dasharray="5 4"/>
+<text x="677" y="300" font-size="12" fill="#cf222e" text-anchor="end">L4 の VRAM 22GB</text>
+<text x="24" y="320" font-size="11" fill="#57606a">10問の正答: Qwen3-32B 8/10、Seed-OSS-36B 9/10。速さ: 7.4 / 8.6 トークン/秒。</text>
+</svg>

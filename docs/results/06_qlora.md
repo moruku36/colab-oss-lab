@@ -218,4 +218,4 @@ flowchart TB
 - [量子化とは何か](../06-quantization.md)
 - [ことばの一覧（LoRA / QLoRA）](../glossary.md)
 
-← 前の実験: [05. 量子化の方式・ビット数を比べる](05_quantization_compare.md) ｜ [実験の一覧](README.md) ｜ [README](../../README.md)
+← 前の実験: [05. 量子化の方式・ビット数を比べる](05_quantization_compare.md) ｜ 次の実験: [07. L4 の上限を探る](07_l4_limit.md) → ｜ [実験の一覧](README.md) ｜ [README](../../README.md)

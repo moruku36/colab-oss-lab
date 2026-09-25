@@ -24,7 +24,7 @@ OSSモデルは降ってきます。その代わり、机の広さ（VRAM）と�
 | 8B〜14B | 4bitなら現実的 | 本線 |
 | 20B前後 | 4bitなら狙える | 設定を詰める必要あり |
 | 27B〜31B | 4bitなら載る（[実験02](results/02_quantization_max.md) で 31B が 17GB） | 基本は無理 |
-| 35B前後 | 4bitでぎりぎり（未検証） | 無理 |
+| 32B〜36B | 4bitで載るが、文章は 2K〜4K トークンまで（[実験07](results/07_l4_limit.md)） | 無理 |
 | 70B級 | この机には載らない | 載らない |
 
 「一番いいGPUを選べば、一番いいモデルが使える」ではありません。  
@@ -83,3 +83,4 @@ Colabの機械は共有の借り物です。消える前提で使います。
 - [02. 量子化で載る最大モデル](results/02_quantization_max.md) … 31B を 4bit で L4 に載せた（上の表の「27B以上」も、推論だけなら 31B まで載った）
 - [03. thinking のオン・オフ](results/03_thinking_on_off.md) … Gemma 4 の thinking の使い分け
 - [04. vLLM で速くする](results/04_vllm_speedup.md) … MoE（26B-A4B）は 31B の 4 倍速い。L4 の普段使いのおすすめ
+- [07. L4 の上限を探る](results/07_l4_limit.md) … 上の表の「32B〜36B」を実際に確かめた。36B が上限で、文章の長さも短くなる

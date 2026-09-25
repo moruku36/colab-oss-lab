@@ -30,7 +30,7 @@ Google Colab（Google AI Pro の特典）で、公開されているAIモデル�
 
 ## これまでの実験
 
-実験の番号は、**行った順**に付けています（01 → 02 → 03 → 04 → 05 → 06）。
+実験の番号は、**行った順**に付けています（01 → 02 → 03 → 04 → 05 → 06 → 07）。
 
 ```mermaid
 flowchart LR
@@ -39,7 +39,8 @@ flowchart LR
     E03 --> E04["04<br/>vLLM で<br/>速くする"]
     E04 --> E05["05<br/>量子化の方式・<br/>ビット数を比べる"]
     E05 --> E06["06<br/>QLoRA で<br/>追加学習する"]
-    E06 -.-> NEXT["次の候補<br/>RAG・API など"]
+    E06 --> E07["07<br/>L4 の上限を<br/>探る"]
+    E07 -.-> NEXT["次の候補<br/>RAG・API など"]
 ```
 
 | # | 実験 | 使ったモデル | 結果（ひとこと） | 記録 | ノート | 関連する解説 |
@@ -50,12 +51,13 @@ flowchart LR
 | 04 | vLLM で速くする | Gemma 4 31B-it / 26B-A4B（vLLM + AWQ 4bit） | 31B は 2.2倍（13.3 トークン/秒）、MoE の 26B-A4B は 8.8倍（53.5）。正答は同じ | [記録と構成図](docs/results/04_vllm_speedup.md) | [ipynb](notebooks/04_vllm_speedup.ipynb) / [Colab](<https://colab.research.google.com/github/moruku36/colab-oss-lab/blob/main/notebooks/04_vllm_speedup.ipynb>) | [量子化](docs/06-quantization.md)・[何ができるか](docs/03-what-you-can-do.md)・[GPU](docs/05-gpu-basics.md) |
 | 05 | 量子化の方式・ビット数を比べる | Qwen3-8B（bf16 / bnb 8bit・4bit / HQQ 4・3・2bit） | 4bit までは賢さほぼ同じ（VRAM 約 1/3）。3bit で崩れ始め、2bit は壊れる | [記録](docs/results/05_quantization_compare.md) | [ipynb](notebooks/05_quantization_compare.ipynb) / [Colab](<https://colab.research.google.com/github/moruku36/colab-oss-lab/blob/main/notebooks/05_quantization_compare.ipynb>) | [量子化](docs/06-quantization.md)・[GPU](docs/05-gpu-basics.md) |
 | 06 | QLoRA で追加学習する | Qwen3-8B（4bit NF4）+ LoRA | 学習 1.4分・VRAM 10GB で軽い。同じ聞き方は 92% 覚えたが、聞き方を変えると 44%。書き方が関係ない質問にもにじんだ | [記録](docs/results/06_qlora.md) | [ipynb](notebooks/06_qlora.ipynb) / [Colab](<https://colab.research.google.com/github/moruku36/colab-oss-lab/blob/main/notebooks/06_qlora.ipynb>) | [何ができるか](docs/03-what-you-can-do.md)・[量子化](docs/06-quantization.md) |
+| 07 | L4 の上限を探る | Qwen3-32B / Seed-OSS-36B（4bit NF4） | GPU だけに載る上限は 36B（空き 1.9GB）。文章の長さは 32B で 4K、36B で 2K まで。36B MoE は載らない | [記録](docs/results/07_l4_limit.md) | [ipynb](notebooks/07_l4_limit.ipynb) / [Colab](<https://colab.research.google.com/github/moruku36/colab-oss-lab/blob/main/notebooks/07_l4_limit.ipynb>) | [GPU](docs/05-gpu-basics.md)・[OSSモデル](docs/04-oss-models.md) |
 
 ### 実験から分かったこと
 
 | 分かったこと | 根拠 |
 |---|---|
-| L4（22GB）に 4bit で載る上限は、約 30B 前後の密モデル（Gemma 4 31B は VRAM 17GB で動く） | [02](docs/results/02_quantization_max.md) |
+| L4（22GB）に 4bit で GPU だけに載る上限は 36B の密モデル。ただし大きいほど扱える文章が短くなる（32B で 4K、36B で 2K トークン） | [02](docs/results/02_quantization_max.md)・[07](docs/results/07_l4_limit.md) |
 | 1.5B と 31B では、日本語の説明の正確さがはっきり違う | [01](docs/results/01_first_run.md)・[02](docs/results/02_quantization_max.md) |
 | 易しい問題なら thinking は不要。オンにすると思考を書く分だけ遅くなる | [03](docs/results/03_thinking_on_off.md) |
 | 速さは「エンジン（vLLM）」と「モデルの型（MoE）」で大きく変わる。bitsandbytes は載せるのは得意だが遅い | [04](docs/results/04_vllm_speedup.md) |
@@ -64,7 +66,7 @@ flowchart LR
 | LoRA は「書き方・口調」はすぐ覚えるが、「新しい事実」を正確に使わせるのは苦手。事実は RAG、書き方は LoRA が向いている | [06](docs/results/06_qlora.md) |
 
 - 実験の一覧（詳しい版）: [docs/results/](docs/results/README.md)
-- 次に試せそうなこと: [次の実験の候補](docs/next-experiments.md)（RAG・API、L4 の上限、画像 など）
+- 次に試せそうなこと: [次の実験の候補](docs/next-experiments.md)（RAG・API、画像 など）
 
 ---
 

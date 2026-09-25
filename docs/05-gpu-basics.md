@@ -83,3 +83,4 @@ GPUを上げることより、載るサイズの良いモデルを選ぶ方が�
 - [02. 量子化で載る最大モデル](results/02_quantization_max.md) … VRAM という「机」に 31B をどう載せたか（図つき）
 - [04. vLLM で速くする](results/04_vllm_speedup.md) … 机がぎりぎりだと、会話の記憶（KV キャッシュ）の置き場がなくなる
 - [05. 量子化の方式・ビット数を比べる](results/05_quantization_compare.md) … 8B のモデルが 15.3GB → 5.7GB（4bit）になり、机の使い方がどう変わるか
+- [07. L4 の上限を探る](results/07_l4_limit.md) … 机（VRAM）がモデルでいっぱいになると、長い文章を置く場所がなくなる

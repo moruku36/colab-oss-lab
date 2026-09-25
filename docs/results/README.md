@@ -11,6 +11,7 @@ Colab（L4）で実際に動かした実験の記録です。番号は行った�
 | 04 | vLLM で速くする | 2026-09-25 | はい | [04_vllm_speedup.md](04_vllm_speedup.md) | [ipynb](../../notebooks/04_vllm_speedup.ipynb) |
 | 05 | 量子化の方式・ビット数を比べる（Qwen3-8B） | 2026-09-25 | いいえ（4つ中3つ合格。HQQ 4bit の正答が2問低下） | [05_quantization_compare.md](05_quantization_compare.md) | [ipynb](../../notebooks/05_quantization_compare.ipynb) |
 | 06 | QLoRA で追加学習する（Qwen3-8B） | 2026-09-25 | いいえ（6つ中4つ合格。聞き方を変えると 44%、10問が 2 問低下） | [06_qlora.md](06_qlora.md) | [ipynb](../../notebooks/06_qlora.ipynb) |
+| 07 | L4 の上限を探る（Qwen3-32B / Seed-OSS-36B） | 2026-09-25 | はい | [07_l4_limit.md](07_l4_limit.md) | [ipynb](../../notebooks/07_l4_limit.ipynb) |
 
 ## 数字でくらべる
 
@@ -42,5 +43,6 @@ Colab（L4）で実際に動かした実験の記録です。番号は行った�
 - [vLLM の速さ](../images/04_vllm_speed.svg) … [04](04_vllm_speedup.md)
 - [量子化の方式・ビット数の比較](../images/05_quantization_compare.svg) … [05](05_quantization_compare.md)
 - [QLoRA の学習前と学習後](../images/06_qlora.svg) … [06](06_qlora.md)
+- [L4 の上限（VRAM と文章の長さ）](../images/07_l4_limit.svg) … [07](07_l4_limit.md)
 
 次に試せそうなこと: [次の実験の候補](../next-experiments.md)
