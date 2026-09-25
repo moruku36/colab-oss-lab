@@ -88,3 +88,15 @@
 1. Qwen3-32B（32.8B）と Seed-OSS-36B（36.2B）を 4bit NF4 で GPU だけに載せられるか試す
 2. 載ったら、扱える文章の長さの上限（1K〜32K トークン）、速さ、10問の正答を測る
 3. Gemma 4 31B（実験02）と並べて、L4 の上限を決める
+
+## 08. RAG・API を作る
+
+- ファイル: [08_rag_api.ipynb](08_rag_api.ipynb)
+- [Colab で開く](https://colab.research.google.com/github/moruku36/colab-oss-lab/blob/main/notebooks/08_rag_api.ipynb)
+- 結果の置き場: [docs/results/08_rag_api.md](../docs/results/08_rag_api.md)
+
+内容:
+
+1. vLLM で Gemma 4 26B-A4B を OpenAI 互換の API サーバーとして起動し、`openai` ライブラリで呼ぶ
+2. このリポジトリの README・解説・実験記録を検索できるようにして、資料を見ながら答えさせる（RAG）
+3. 06 と同じ 25 問で RAG なし / あり（/ QLoRA）を比べ、資料にない質問で断れるか、同時に聞いたときの速さも測る
