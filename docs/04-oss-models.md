@@ -85,3 +85,4 @@ Colabの機械は共有の借り物です。消える前提で使います。
 - [04. vLLM で速くする](results/04_vllm_speedup.md) … MoE（26B-A4B）は 31B の 4 倍速い。L4 の普段使いのおすすめ
 - [07. L4 の上限を探る](results/07_l4_limit.md) … 上の表の「32B〜36B」を実際に確かめた。36B が上限で、文章の長さも短くなる
 - [08. RAG・API を作る](results/08_rag_api.md) … 載せたモデルを API にして、資料を見ながら答えさせる
+- [09. 画像も入れてみる](results/09_image_input.md) … Gemma 4 は画像も読める。画像の部品は +1.1GiB で、L4 のまま使える

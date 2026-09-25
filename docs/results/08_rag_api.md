@@ -207,4 +207,4 @@ RAG あり: 成果物（学習した追加部品など）を、Google Drive か 
 - [OSSモデルを載せると、何ができるのか](../04-oss-models.md)
 - [ことばの一覧（RAG・API）](../glossary.md)
 
-← 前の実験: [07. L4 の上限を探る](07_l4_limit.md) ｜ [実験の一覧](README.md) ｜ [README](../../README.md)
+← 前の実験: [07. L4 の上限を探る](07_l4_limit.md) ｜ 次の実験: [09. 画像も入れてみる](09_image_input.md) → ｜ [実験の一覧](README.md) ｜ [README](../../README.md)

@@ -100,3 +100,15 @@
 1. vLLM で Gemma 4 26B-A4B を OpenAI 互換の API サーバーとして起動し、`openai` ライブラリで呼ぶ
 2. このリポジトリの README・解説・実験記録を検索できるようにして、資料を見ながら答えさせる（RAG）
 3. 06 と同じ 25 問で RAG なし / あり（/ QLoRA）を比べ、資料にない質問で断れるか、同時に聞いたときの速さも測る
+
+## 09. 画像も入れてみる
+
+- ファイル: [09_image_input.ipynb](09_image_input.ipynb)
+- [Colab で開く](https://colab.research.google.com/github/moruku36/colab-oss-lab/blob/main/notebooks/09_image_input.ipynb)
+- 結果の置き場: [docs/results/09_image_input.md](../docs/results/09_image_input.md)
+
+内容:
+
+1. vLLM で Gemma 4 26B-A4B を画像の部品つきで API サーバーとして起動する（08 から `--language-model-only` を外し、`--max-num-batched-tokens` を 4096 に）
+2. 答えが分かっている画像（グラフ・レシート・スクショ・図形・計算・このリポジトリの図・写真）を作り、`image_url` で送って 14 問を採点する
+3. 画像 1 枚のトークン数、速さ、メモリ、画像の細かさ（70 / 280 / 1120 トークン）による小さい字の読み取りの差を測る

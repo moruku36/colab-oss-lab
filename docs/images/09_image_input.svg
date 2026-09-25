@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 520" font-family="'Hiragino Sans','Noto Sans JP','Yu Gothic',Meiryo,sans-serif">
+<rect width="860" height="520" rx="12" fill="#ffffff"/>
+<text x="24" y="36" font-size="20" font-weight="bold" fill="#1f2328">Gemma 4 26B-A4B は画像も読める：14 問すべて正解、1 問 0.35 秒</text>
+<text x="24" y="58" font-size="13" fill="#57606a">vLLM の OpenAI 互換 API に画像を送る / AWQ 4bit（画像の部品は bf16）/ L4 22GB</text>
+<text x="24" y="92" font-size="15" font-weight="bold" fill="#1f2328">画像の種類ごとの正解</text>
+<text x="24" y="118" font-size="14" fill="#1f2328">棒グラフ（目盛りから読む）</text>
+<circle cx="254" cy="113" r="7" fill="#1a7f37"/>
+<circle cx="274" cy="113" r="7" fill="#1a7f37"/>
+<circle cx="294" cy="113" r="7" fill="#1a7f37"/>
+<text x="316" y="118" font-size="12" font-weight="bold" fill="#1a7f37">3 / 3</text>
+<text x="24" y="146" font-size="14" fill="#1f2328">日本語のレシート</text>
+<circle cx="254" cy="141" r="7" fill="#1a7f37"/>
+<circle cx="274" cy="141" r="7" fill="#1a7f37"/>
+<circle cx="294" cy="141" r="7" fill="#1a7f37"/>
+<text x="316" y="146" font-size="12" font-weight="bold" fill="#1a7f37">3 / 3</text>
+<text x="24" y="174" font-size="14" fill="#1f2328">画面のスクショ</text>
+<circle cx="254" cy="169" r="7" fill="#1a7f37"/>
+<circle cx="274" cy="169" r="7" fill="#1a7f37"/>
+<text x="296" y="174" font-size="12" font-weight="bold" fill="#1a7f37">2 / 2</text>
+<text x="24" y="202" font-size="14" fill="#1f2328">図形を数える</text>
+<circle cx="254" cy="197" r="7" fill="#1a7f37"/>
+<circle cx="274" cy="197" r="7" fill="#1a7f37"/>
+<text x="296" y="202" font-size="12" font-weight="bold" fill="#1a7f37">2 / 2</text>
+<text x="444" y="118" font-size="14" fill="#1f2328">計算の画像</text>
+<circle cx="674" cy="113" r="7" fill="#1a7f37"/>
+<text x="696" y="118" font-size="12" font-weight="bold" fill="#1a7f37">1 / 1</text>
+<text x="444" y="146" font-size="14" fill="#1f2328">このリポジトリの図</text>
+<circle cx="674" cy="141" r="7" fill="#1a7f37"/>
+<circle cx="694" cy="141" r="7" fill="#1a7f37"/>
+<text x="716" y="146" font-size="12" font-weight="bold" fill="#1a7f37">2 / 2</text>
+<text x="444" y="174" font-size="14" fill="#1f2328">猫の写真</text>
+<circle cx="674" cy="169" r="7" fill="#1a7f37"/>
+<text x="696" y="174" font-size="12" font-weight="bold" fill="#1a7f37">1 / 1</text>
+<line x1="24" y1="236" x2="836" y2="236" stroke="#d0d7de"/>
+<text x="24" y="262" font-size="15" font-weight="bold" fill="#1f2328">画像の細かさ（1 枚を何トークンにするか）と、小さい文字の読み取り</text>
+<text x="24" y="282" font-size="12" fill="#57606a">1400×1400 の画像に 13px の字で 40 行。商品コードの価格を 4 問</text>
+<text x="24" y="325" font-size="14" fill="#1f2328">70 トークン</text>
+<rect x="200" y="310" width="300" height="20" rx="3" fill="#eaeef2"/>
+<text x="208" y="325" font-size="13" font-weight="bold" fill="#cf222e">0 / 4（コードの数字を答えた）</text>
+<text x="24" y="355" font-size="14" fill="#1f2328">280（初期設定）</text>
+<rect x="200" y="340" width="300" height="20" rx="3" fill="#eaeef2"/>
+<rect x="200" y="340" width="225" height="20" rx="3" fill="#bf8700"/>
+<text x="433" y="355" font-size="13" font-weight="bold" fill="#bf8700">3 / 4（1 問「含まれていない」）</text>
+<text x="24" y="385" font-size="14" fill="#1f2328">1120 トークン</text>
+<rect x="200" y="370" width="300" height="20" rx="3" fill="#eaeef2"/>
+<rect x="200" y="370" width="300" height="20" rx="3" fill="#0969da"/>
+<text x="508" y="385" font-size="13" font-weight="bold" fill="#0969da">4 / 4</text>
+<text x="24" y="414" font-size="12" fill="#57606a">レシート（大きい字）の合計は 70 トークンでも正解。細かさが効くのは小さい字だけ</text>
+<line x1="24" y1="432" x2="836" y2="432" stroke="#d0d7de"/>
+<text x="24" y="458" font-size="15" font-weight="bold" fill="#1f2328">画像の部品を載せたときのメモリ（08 の文字だけと比べる）</text>
+<text x="24" y="484" font-size="13" fill="#1f2328">重み 15.6 → 16.6 GiB（+1.1 GiB）。会話の記憶（KV キャッシュ）59,412 → 25,833 トークン（8K の会話を 3 本同時に持てる）</text>
+<text x="24" y="506" font-size="12" fill="#57606a">画像 1 枚 ≒ 260 トークン（初期設定）。同時に 14 問: 3.2 秒（順番に 4.2 秒）</text>
+</svg>
