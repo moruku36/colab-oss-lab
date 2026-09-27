@@ -25,12 +25,13 @@ Google Colab（Google AI Pro の特典）で、公開されているAIモデル�
 5. [GPU と L4 / A100 の違い](docs/05-gpu-basics.md)
 6. [量子化とは何か（なぜ4bitが出てくるのか）](docs/06-quantization.md)
 7. [ことばの一覧](docs/glossary.md)
+8. [追加ノート11〜13の使い方と注意](docs/07-notebooks-11-13.md)
 
 ---
 
 ## これまでの実験
 
-実験の番号は、**行った順**に付けています（01 → 02 → 03 → 04 → 05 → 06 → 07 → 08 → 09 → 10）。
+実験の番号は、**追加・実施した順**に付けています（01 → … → 13）。11〜13は実行ノートを追加済みですが、従来と同じ定量評価はまだ記録していません。
 
 ```mermaid
 flowchart LR
@@ -43,7 +44,10 @@ flowchart LR
     E07 --> E08["08<br/>RAG・API を<br/>作る"]
     E08 --> E09["09<br/>画像も<br/>入れてみる"]
     E09 --> E10["10<br/>RAG の検索を<br/>よくする"]
-    E10 -.-> NEXT["次の候補<br/>難しい画像・RAG の答え方 など"]
+    E10 --> E11["11<br/>Qwen3-VLで<br/>画像を判定"]
+    E11 --> E12["12<br/>Qwen-Imageで<br/>画像を生成"]
+    E12 --> E13["13<br/>27B GGUF・<br/>Abliteration"]
+    E13 -.-> NEXT["次の候補<br/>定量評価・画像+RAG など"]
 ```
 
 | # | 実験 | 使ったモデル | 結果（ひとこと） | 記録 | ノート | 関連する解説 |
@@ -58,6 +62,9 @@ flowchart LR
 | 08 | RAG・API を作る | Gemma 4 26B-A4B（vLLM の OpenAI 互換 API）+ 資料検索 | 06 と同じ 25 問で 64%（LoRA は 44%）。資料にない質問は 5/5 で「記載がありません」。同時に聞くと 3.4 倍速い | [記録](docs/results/08_rag_api.md) | [ipynb](notebooks/08_rag_api.ipynb) / [Colab](<https://colab.research.google.com/github/moruku36/colab-oss-lab/blob/main/notebooks/08_rag_api.ipynb>) | [何ができるか](docs/03-what-you-can-do.md)・[OSSモデル](docs/04-oss-models.md) |
 | 09 | 画像も入れてみる | Gemma 4 26B-A4B（vLLM + AWQ 4bit、画像の部品あり） | グラフ・日本語のレシート・スクショ・図形・写真の 14 問すべて正解、1 問 0.35 秒。小さい字は画像の細かさを上げると読める | [記録](docs/results/09_image_input.md) | [ipynb](notebooks/09_image_input.ipynb) / [Colab](<https://colab.research.google.com/github/moruku36/colab-oss-lab/blob/main/notebooks/09_image_input.ipynb>) | [何ができるか](docs/03-what-you-can-do.md)・[OSSモデル](docs/04-oss-models.md) |
 | 10 | RAG の検索をよくする | Gemma 4 26B-A4B + e5-large・BM25・リランカー（bge-reranker-v2-m3） | リランカーで検索 76% → 92%、正答 64% → 72%（見直すと 84%）。リポジトリ名を外す・質問の言い換えは効かなかった | [記録](docs/results/10_rag_retrieval.md) | [ipynb](notebooks/10_rag_retrieval.ipynb) / [Colab](<https://colab.research.google.com/github/moruku36/colab-oss-lab/blob/main/notebooks/10_rag_retrieval.ipynb>) | [何ができるか](docs/03-what-you-can-do.md) |
+| 11 | Qwen3-VLで画像を判定する | Qwen3-VL-8B-Instruct（NF4 4bit） | 画像判定関数、Gradio UI、Colab標準アップロードを用意。定量評価は未記録 | [使い方・注意](docs/07-notebooks-11-13.md#11-qwen3-vlで画像を判定) | [ipynb](notebooks/11_qwen3_vl_image_judge.ipynb) / [Colab](<https://colab.research.google.com/github/moruku36/colab-oss-lab/blob/main/notebooks/11_qwen3_vl_image_judge.ipynb>) | [GPU](docs/05-gpu-basics.md)・[OSSモデル](docs/04-oss-models.md) |
+| 12 | Qwen-Image-2.1で画像を生成する | Qwen-Image-2.1（Diffusers） | 同じseedで下書き→本番を生成する手順を用意。定量評価は未記録 | [使い方・注意](docs/07-notebooks-11-13.md#12-qwen-image-21で画像を生成) | [ipynb](notebooks/12_qwen_image_2_1_colab.ipynb) / [Colab](<https://colab.research.google.com/github/moruku36/colab-oss-lab/blob/main/notebooks/12_qwen_image_2_1_colab.ipynb>) | [GPU](docs/05-gpu-basics.md)・[OSSモデル](docs/04-oss-models.md) |
+| 13 | 27B GGUF推論とAbliteration | Qwen3.8-27B Q4_K_M（llama.cpp）／Qwen2.5-3B-Instruct（HF） | GGUFのVRAM自動調整と、拒否方向抽出・重み直交化の実装を収録。定量評価は未記録 | [使い方・注意](docs/07-notebooks-11-13.md#13-qwen-27b-gguf実行とabliteration) | [ipynb](notebooks/13_qwen27b_gguf_abliteration.ipynb) / [Colab](<https://colab.research.google.com/github/moruku36/colab-oss-lab/blob/main/notebooks/13_qwen27b_gguf_abliteration.ipynb>) | [量子化](docs/06-quantization.md)・[GPU](docs/05-gpu-basics.md) |
 
 ### 実験から分かったこと
 
@@ -98,7 +105,7 @@ ColabにOSSモデルを載せるのは「厨房を借りて、自分で料理し
 
 1. 上のドキュメントを、番号順に読む
 2. Colab を開き、ランタイムを **L4 GPU** にする
-3. 「[これまでの実験](#これまでの実験)」の表から、ノートを Colab で開いて試す（最初は 01 から）
+3. 「[これまでの実験](#これまでの実験)」の表から、ノートを Colab で開いて試す（最初は 01 から。11〜13は個別テーマのノート）
 4. うまくいったこと、失敗したことを Issue かメモに残す
 
 成果物（学習した追加部品など）は、Colabのディスクに置いたままにしないでください。  

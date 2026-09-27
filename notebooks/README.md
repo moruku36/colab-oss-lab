@@ -124,3 +124,45 @@
 1. 08 と同じモデル・資料（コミット `e4570f0` に固定）・質問で、検索のやり方だけを A〜F の 6 段階で変える
 2. リポジトリ名を外す → 大きい埋め込み（e5-large）→ BM25 とのハイブリッド → リランカー（bge-reranker-v2-m3）→ 質問の言い換え
 3. それぞれで検索（1 位・上位 5・上位 10・MRR）、RAG の正答率、資料にない質問で断れるか、検索の時間を測る
+
+## 11. Qwen3-VLで画像を判定する
+
+- ファイル: [11_qwen3_vl_image_judge.ipynb](11_qwen3_vl_image_judge.ipynb)
+- [Colab で開く](https://colab.research.google.com/github/moruku36/colab-oss-lab/blob/main/notebooks/11_qwen3_vl_image_judge.ipynb)
+- 詳細: [追加ノート11〜13のガイド](../docs/07-notebooks-11-13.md#11-qwen3-vlで画像を判定)
+
+内容:
+
+1. `Qwen/Qwen3-VL-8B-Instruct`をbitsandbytes NF4 4bitで読み込む
+2. 画像と日本語の質問を渡す判定関数を作る
+3. Gradio UIまたはColab標準アップロードから画像を入力する
+
+L4向けの既定値です。30B版はより大きなVRAMが必要です。現時点では定量評価の記録はなく、用途に合わせた正解データで別途評価してください。
+
+## 12. Qwen-Image-2.1で画像を生成する
+
+- ファイル: [12_qwen_image_2_1_colab.ipynb](12_qwen_image_2_1_colab.ipynb)
+- [Colab で開く](https://colab.research.google.com/github/moruku36/colab-oss-lab/blob/main/notebooks/12_qwen_image_2_1_colab.ipynb)
+- 詳細: [追加ノート11〜13のガイド](../docs/07-notebooks-11-13.md#12-qwen-image-21で画像を生成)
+
+内容:
+
+1. GPU・VRAM・ディスク容量を確認し、Diffusersなどを準備する
+2. プロンプト、縦横比、seedを設定して1024帯の下書きを生成する
+3. 同じseedで解像度とstep数を上げ、本番PNGを保存する
+
+L4またはA100を推奨します。インストール後はランタイム再起動が必要です。L4で不安定な場合は本番解像度を1280帯へ下げてください。
+
+## 13. Qwen 27B GGUF実行とAbliteration
+
+- ファイル: [13_qwen27b_gguf_abliteration.ipynb](13_qwen27b_gguf_abliteration.ipynb)
+- [Colab で開く](https://colab.research.google.com/github/moruku36/colab-oss-lab/blob/main/notebooks/13_qwen27b_gguf_abliteration.ipynb)
+- 詳細: [追加ノート11〜13のガイド](../docs/07-notebooks-11-13.md#13-qwen-27b-gguf実行とabliteration)
+
+内容:
+
+1. `llama.cpp`をCUDA対応でビルドし、Qwen3.8-27B Q4_K_Mを実行する
+2. `--fit`で空きVRAMに合わせてGPU層数を自動調整する
+3. 別のHugging Face CausalLMから拒否方向を抽出し、`o_proj`・`down_proj`を直交化して保存する
+
+GGUF推論とAbliterationは独立した実験です。Abliteration後のモデルをGGUF推論へ自動反映する処理は含みません。拒否挙動を弱める処理は、隔離された研究環境でのみ使用してください。

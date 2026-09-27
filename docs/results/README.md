@@ -15,6 +15,16 @@ Colab（L4）で実際に動かした実験の記録です。番号は行った�
 | 08 | RAG・API を作る（Gemma 4 26B-A4B + 資料検索） | 2026-09-25 | いいえ（5つ中3つ合格。正答 64%、検索 76%） | [08_rag_api.md](08_rag_api.md) | [ipynb](../../notebooks/08_rag_api.ipynb) |
 | 09 | 画像も入れてみる（Gemma 4 26B-A4B + 画像） | 2026-09-25 | はい | [09_image_input.md](09_image_input.md) | [ipynb](../../notebooks/09_image_input.ipynb) |
 | 10 | RAG の検索をよくする（埋め込み・BM25・リランカー・言い換え） | 2026-09-25 | いいえ（4つ中3つ合格。検索 92% は達成、正答は 72%、見直すと 84%） | [10_rag_retrieval.md](10_rag_retrieval.md) | [ipynb](../../notebooks/10_rag_retrieval.ipynb) |
+## ノート追加済み・定量結果は未記録
+
+次のノートは実行手順を追加済みですが、01〜10と同じ形式の測定結果はまだ記録していません。使い方と評価項目は[追加ノート11〜13のガイド](../07-notebooks-11-13.md)を参照してください。
+
+| # | テーマ | ノート | 状態 |
+|---|---|---|---|
+| 11 | Qwen3-VLで画像判定 | [ipynb](../../notebooks/11_qwen3_vl_image_judge.ipynb) | 手順整備済み、定量評価未記録 |
+| 12 | Qwen-Image-2.1で画像生成 | [ipynb](../../notebooks/12_qwen_image_2_1_colab.ipynb) | 手順整備済み、定量評価未記録 |
+| 13 | 27B GGUF推論とAbliteration | [ipynb](../../notebooks/13_qwen27b_gguf_abliteration.ipynb) | OOM対策・実装済み、定量評価未記録 |
+
 
 ## 数字でくらべる
 
