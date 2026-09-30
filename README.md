@@ -1,122 +1,24 @@
-# colab-oss-lab
+# Colab OSS Model Lab
 
-Google Colab（Google AI Pro の特典）で、公開されているAIモデル（OSSモデル）を試すための学習用リポジトリです。
+[English](README.md) | [日本語](README.ja.md)
 
-このリポジトリは、機械学習の専門家向けではありません。  
-会社に入りたてのエンジニア、あるいは「GPUという言葉は聞いたことがある」くらいの人を想定しています。
+A beginner-oriented collection of Google Colab notebooks and explanations for trying open AI models, comparing L4 and A100 GPUs, quantization, inference settings, and multimodal experiments.
 
-今の自分の環境（2026年9月確認）:
+## Explore the experiments
 
-- Google AI Pro の特典で、Colab に `PRO` が付いている
-- よく当たるGPUは **NVIDIA L4**（メモリ約22.5GB）
-- A100 も選べるが、普段は L4 を使う
-- H100 と G4 は、今の契約では選べない
+Read the introductory documents, choose a notebook, select an available Colab GPU, and record model quality, latency, and memory use. The experiments cover model loading, 4-bit quantization, thinking settings, inference engines, and multimodal tasks.
 
----
+The recorded September 2026 environment commonly received an L4 with about 22.5GB VRAM and could also select A100. This is the owner's observed environment, not a guarantee of GPU availability or plan entitlements. Notebooks 11–13 were added without the same quantitative evaluation as the earlier experiments.
 
-## このリポジトリで分かること（解説）
+[What is Colab?](docs/01-what-is-colab.md) · [GPU basics](docs/05-gpu-basics.md) · [Quantization](docs/06-quantization.md) · [Glossary](docs/glossary.md).
 
-先に読むと実験の意味が分かりやすくなります。各ページの最後に、そのページに関係する実験へのリンクがあります。
 
-1. [Colab とは何か](docs/01-what-is-colab.md)
-2. [Google AI Pro で Colab に何が付いたか](docs/02-google-ai-pro.md)
-3. [これを使うと、何ができるのか](docs/03-what-you-can-do.md)
-4. [OSSモデルを載せると、何ができるのか](docs/04-oss-models.md)
-5. [GPU と L4 / A100 の違い](docs/05-gpu-basics.md)
-6. [量子化とは何か（なぜ4bitが出てくるのか）](docs/06-quantization.md)
-7. [ことばの一覧](docs/glossary.md)
-8. [追加ノート11〜13の使い方と注意](docs/07-notebooks-11-13.md)
+## Contents
 
----
+- [data/](data)
+- [docs/](docs)
+- [notebooks/](notebooks)
 
-## これまでの実験
+## Detailed documentation
 
-実験の番号は、**追加・実施した順**に付けています（01 → … → 13）。11〜13は実行ノートを追加済みですが、従来と同じ定量評価はまだ記録していません。
-
-```mermaid
-flowchart LR
-    E01["01<br/>L4 を確認して<br/>小さいモデルを動かす"] --> E02["02<br/>4bit 量子化で<br/>31B を L4 に載せる"]
-    E02 --> E03["03<br/>thinking の<br/>オン・オフを比べる"]
-    E03 --> E04["04<br/>vLLM で<br/>速くする"]
-    E04 --> E05["05<br/>量子化の方式・<br/>ビット数を比べる"]
-    E05 --> E06["06<br/>QLoRA で<br/>追加学習する"]
-    E06 --> E07["07<br/>L4 の上限を<br/>探る"]
-    E07 --> E08["08<br/>RAG・API を<br/>作る"]
-    E08 --> E09["09<br/>画像も<br/>入れてみる"]
-    E09 --> E10["10<br/>RAG の検索を<br/>よくする"]
-    E10 --> E11["11<br/>Qwen3-VLで<br/>画像を判定"]
-    E11 --> E12["12<br/>Qwen-Imageで<br/>画像を生成"]
-    E12 --> E13["13<br/>27B GGUF・<br/>Abliteration"]
-    E13 -.-> NEXT["次の候補<br/>定量評価・画像+RAG など"]
-```
-
-| # | 実験 | 使ったモデル | 結果（ひとこと） | 記録 | ノート | 関連する解説 |
-|---|---|---|---|---|---|---|
-| 01 | L4 の確認と、小さいモデルを1回動かす | Qwen2.5-1.5B-Instruct（量子化なし） | L4（22GB）を確認。動いたが、日本語の説明は不正確 | [記録](docs/results/01_first_run.md) | [ipynb](notebooks/01_l4_check_and_tiny_model.ipynb) / [Colab](<https://colab.research.google.com/github/moruku36/colab-oss-lab/blob/main/notebooks/01_l4_check_and_tiny_model.ipynb>) | [Colab](docs/01-what-is-colab.md)・[GPU](docs/05-gpu-basics.md)・[OSSモデル](docs/04-oss-models.md) |
-| 02 | 量子化で L4 に載る「いちばん大きいモデル」 | Gemma 4 31B-it（bitsandbytes 4bit） | 62.5GB → 16.6GB。VRAM 17.0GB で載り、説明も計算も正確。ChatGPT でいうと o3 / o4-mini くらい | [記録と構成図](docs/results/02_quantization_max.md) | [ipynb](notebooks/02_quantize_largest_model_on_l4.ipynb) / [Colab](<https://colab.research.google.com/github/moruku36/colab-oss-lab/blob/main/notebooks/02_quantize_largest_model_on_l4.ipynb>) | [量子化](docs/06-quantization.md)・[GPU](docs/05-gpu-basics.md)・[OSSモデル](docs/04-oss-models.md) |
-| 03 | thinking（考えてから答える）のオン・オフ | Gemma 4 31B-it（4bit） | 5問ともどちらも正解。オンは約3.6倍遅い → 普段はオフで十分 | [記録](docs/results/03_thinking_on_off.md) | [ipynb](notebooks/03_thinking_on_off.ipynb) / [Colab](<https://colab.research.google.com/github/moruku36/colab-oss-lab/blob/main/notebooks/03_thinking_on_off.ipynb>) | [OSSモデル](docs/04-oss-models.md) |
-| 04 | vLLM で速くする | Gemma 4 31B-it / 26B-A4B（vLLM + AWQ 4bit） | 31B は 2.2倍（13.3 トークン/秒）、MoE の 26B-A4B は 8.8倍（53.5）。正答は同じ | [記録と構成図](docs/results/04_vllm_speedup.md) | [ipynb](notebooks/04_vllm_speedup.ipynb) / [Colab](<https://colab.research.google.com/github/moruku36/colab-oss-lab/blob/main/notebooks/04_vllm_speedup.ipynb>) | [量子化](docs/06-quantization.md)・[何ができるか](docs/03-what-you-can-do.md)・[GPU](docs/05-gpu-basics.md) |
-| 05 | 量子化の方式・ビット数を比べる | Qwen3-8B（bf16 / bnb 8bit・4bit / HQQ 4・3・2bit） | 4bit までは賢さほぼ同じ（VRAM 約 1/3）。3bit で崩れ始め、2bit は壊れる | [記録](docs/results/05_quantization_compare.md) | [ipynb](notebooks/05_quantization_compare.ipynb) / [Colab](<https://colab.research.google.com/github/moruku36/colab-oss-lab/blob/main/notebooks/05_quantization_compare.ipynb>) | [量子化](docs/06-quantization.md)・[GPU](docs/05-gpu-basics.md) |
-| 06 | QLoRA で追加学習する | Qwen3-8B（4bit NF4）+ LoRA | 学習 1.4分・VRAM 10GB で軽い。同じ聞き方は 92% 覚えたが、聞き方を変えると 44%。書き方が関係ない質問にもにじんだ | [記録](docs/results/06_qlora.md) | [ipynb](notebooks/06_qlora.ipynb) / [Colab](<https://colab.research.google.com/github/moruku36/colab-oss-lab/blob/main/notebooks/06_qlora.ipynb>) | [何ができるか](docs/03-what-you-can-do.md)・[量子化](docs/06-quantization.md) |
-| 07 | L4 の上限を探る | Qwen3-32B / Seed-OSS-36B（4bit NF4） | GPU だけに載る上限は 36B（空き 1.9GB）。文章の長さは 32B で 4K、36B で 2K まで。36B MoE は載らない | [記録](docs/results/07_l4_limit.md) | [ipynb](notebooks/07_l4_limit.ipynb) / [Colab](<https://colab.research.google.com/github/moruku36/colab-oss-lab/blob/main/notebooks/07_l4_limit.ipynb>) | [GPU](docs/05-gpu-basics.md)・[OSSモデル](docs/04-oss-models.md) |
-| 08 | RAG・API を作る | Gemma 4 26B-A4B（vLLM の OpenAI 互換 API）+ 資料検索 | 06 と同じ 25 問で 64%（LoRA は 44%）。資料にない質問は 5/5 で「記載がありません」。同時に聞くと 3.4 倍速い | [記録](docs/results/08_rag_api.md) | [ipynb](notebooks/08_rag_api.ipynb) / [Colab](<https://colab.research.google.com/github/moruku36/colab-oss-lab/blob/main/notebooks/08_rag_api.ipynb>) | [何ができるか](docs/03-what-you-can-do.md)・[OSSモデル](docs/04-oss-models.md) |
-| 09 | 画像も入れてみる | Gemma 4 26B-A4B（vLLM + AWQ 4bit、画像の部品あり） | グラフ・日本語のレシート・スクショ・図形・写真の 14 問すべて正解、1 問 0.35 秒。小さい字は画像の細かさを上げると読める | [記録](docs/results/09_image_input.md) | [ipynb](notebooks/09_image_input.ipynb) / [Colab](<https://colab.research.google.com/github/moruku36/colab-oss-lab/blob/main/notebooks/09_image_input.ipynb>) | [何ができるか](docs/03-what-you-can-do.md)・[OSSモデル](docs/04-oss-models.md) |
-| 10 | RAG の検索をよくする | Gemma 4 26B-A4B + e5-large・BM25・リランカー（bge-reranker-v2-m3） | リランカーで検索 76% → 92%、正答 64% → 72%（見直すと 84%）。リポジトリ名を外す・質問の言い換えは効かなかった | [記録](docs/results/10_rag_retrieval.md) | [ipynb](notebooks/10_rag_retrieval.ipynb) / [Colab](<https://colab.research.google.com/github/moruku36/colab-oss-lab/blob/main/notebooks/10_rag_retrieval.ipynb>) | [何ができるか](docs/03-what-you-can-do.md) |
-| 11 | Qwen3-VLで画像を判定する | Qwen3-VL-8B-Instruct（NF4 4bit） | 画像判定関数、Gradio UI、Colab標準アップロードを用意。定量評価は未記録 | [使い方・注意](docs/07-notebooks-11-13.md#11-qwen3-vlで画像を判定) | [ipynb](notebooks/11_qwen3_vl_image_judge.ipynb) / [Colab](<https://colab.research.google.com/github/moruku36/colab-oss-lab/blob/main/notebooks/11_qwen3_vl_image_judge.ipynb>) | [GPU](docs/05-gpu-basics.md)・[OSSモデル](docs/04-oss-models.md) |
-| 12 | Qwen-Image-2.1で画像を生成する | Qwen-Image-2.1（Diffusers） | 同じseedで下書き→本番を生成する手順を用意。定量評価は未記録 | [使い方・注意](docs/07-notebooks-11-13.md#12-qwen-image-21で画像を生成) | [ipynb](notebooks/12_qwen_image_2_1_colab.ipynb) / [Colab](<https://colab.research.google.com/github/moruku36/colab-oss-lab/blob/main/notebooks/12_qwen_image_2_1_colab.ipynb>) | [GPU](docs/05-gpu-basics.md)・[OSSモデル](docs/04-oss-models.md) |
-| 13 | 27B GGUF推論とAbliteration | Qwen3.8-27B Q4_K_M（llama.cpp）／Qwen2.5-3B-Instruct（HF） | GGUFのVRAM自動調整と、拒否方向抽出・重み直交化の実装を収録。定量評価は未記録 | [使い方・注意](docs/07-notebooks-11-13.md#13-qwen-27b-gguf実行とabliteration) | [ipynb](notebooks/13_qwen27b_gguf_abliteration.ipynb) / [Colab](<https://colab.research.google.com/github/moruku36/colab-oss-lab/blob/main/notebooks/13_qwen27b_gguf_abliteration.ipynb>) | [量子化](docs/06-quantization.md)・[GPU](docs/05-gpu-basics.md) |
-
-### 実験から分かったこと
-
-| 分かったこと | 根拠 |
-|---|---|
-| L4（22GB）に 4bit で GPU だけに載る上限は 36B の密モデル。ただし大きいほど扱える文章が短くなる（32B で 4K、36B で 2K トークン） | [02](docs/results/02_quantization_max.md)・[07](docs/results/07_l4_limit.md) |
-| 1.5B と 31B では、日本語の説明の正確さがはっきり違う | [01](docs/results/01_first_run.md)・[02](docs/results/02_quantization_max.md) |
-| 易しい問題なら thinking は不要。オンにすると思考を書く分だけ遅くなる | [03](docs/results/03_thinking_on_off.md) |
-| 速さは「エンジン（vLLM）」と「モデルの型（MoE）」で大きく変わる。bitsandbytes は載せるのは得意だが遅い | [04](docs/results/04_vllm_speedup.md) |
-| 31B を vLLM で動かすと、会話の記憶（KV キャッシュ）がほとんど残らない。L4 1枚の普段使いは **vLLM + Gemma 4 26B-A4B（AWQ 4bit）** がおすすめ | [04](docs/results/04_vllm_speedup.md) |
-| 量子化は 4bit が落としどころ。8bit はほぼ劣化なしだが遅い、3bit 以下は崩れる。普段は bitsandbytes NF4 | [05](docs/results/05_quantization_compare.md) |
-| LoRA は「書き方・口調」はすぐ覚えるが、「新しい事実」は苦手（44%）。事実は RAG（資料検索）の方が正確で（64%）、知らないことは「記載がありません」と言える | [06](docs/results/06_qlora.md)・[08](docs/results/08_rag_api.md) |
-| RAG の検索は「リランカー（並べ直し）」が一番効く（検索 76% → 92%）。検索が良くなった後の外れは、答える側の取り違えと資料の書き方 | [10](docs/results/10_rag_retrieval.md) |
-| 同じ 26B-A4B に画像の部品（+1.1GiB）を足すだけで、グラフ・表・スクショ・日本語の文字を読める。小さい字は「画像の細かさ（トークン数）」しだい | [09](docs/results/09_image_input.md) |
-
-- 実験の一覧（詳しい版）: [docs/results/](docs/results/README.md)
-- 次に試せそうなこと: [次の実験の候補](docs/next-experiments.md)（難しい画像、RAG の答え方の改善 など）
-
----
-
-## いちばん短い説明
-
-| ことば | たとえ |
-|---|---|
-| Colab | ブラウザで開く、借り物のパソコン |
-| GPU | AIを動かすための計算機 |
-| VRAM | その計算機の作業机。狭いと大きなモデルが載らない |
-| CU（コンピューティングユニット） | 月ごとの回数券。強いGPUほど早く減る |
-| OSSモデル | 誰でもダウンロードして使えるAIの重み |
-| 量子化 | 重みを圧縮して、狭い机にも載せる技術 |
-
-Geminiアプリは「完成した店員に話しかける」です。  
-ColabにOSSモデルを載せるのは「厨房を借りて、自分で料理してみる」です。
-
----
-
-## このリポジトリの使い方
-
-1. 上のドキュメントを、番号順に読む
-2. Colab を開き、ランタイムを **L4 GPU** にする
-3. 「[これまでの実験](#これまでの実験)」の表から、ノートを Colab で開いて試す（最初は 01 から。11〜13は個別テーマのノート）
-4. うまくいったこと、失敗したことを Issue かメモに残す
-
-成果物（学習した追加部品など）は、Colabのディスクに置いたままにしないでください。  
-セッションが切れると消えます。Google Drive か Hugging Face に保存します。
-
----
-
-## 今はやらないこと
-
-- 24時間動かし続けるチャットサーバー
-- 最大級モデル（70Bなど）の本学習
-- 秘密情報をColabに置きっぱなしにすること
-
-Colabは「試す場所」です。毎日使う完成品を置く場所ではありません。
+The [Japanese guide](README.ja.md) retains the complete original setup instructions, configuration, examples, project status, and limitations. Supporting documents keep their existing language.
